@@ -11,12 +11,15 @@ export default function Auth({ title, buttonText, onSubmit, loginStatus, linkTex
                 <h2 className="auth__title">{title}</h2>
                 <form className="auth__form" onSubmit={onSubmit}>
                     {children}
-                    <button type="submit" className="auth__submit">{buttonText}</button>
+                    <div>
+                        <button type="submit" className="auth__submit">{buttonText}</button>
+                        <p className='auth__text'>{loginStatus}{' '}
+                            <Link className='auth__link' to='/sign-in'>{linkText}
+                            </Link>
+                        </p>
+                    </div>
                 </form>
-                <p className='auth__text'>{loginStatus}{' '}
-                    <Link className='auth__link' to='/sign-in'>{linkText}
-                    </Link>
-                </p>
+
             </div>
         </>
     )

@@ -12,6 +12,7 @@ export default function Login() {
                 linkText={'Регистрация'}
             // onSubmit={onChange}
             >
+                <div className='input__container'>
                 <label className='input__label' for="Email">E-mail</label>
                 <input
                     className="input"
@@ -31,6 +32,7 @@ export default function Login() {
                     autoComplete="on"
                     required
                 />
+                </div>
             </Auth>
         </>
     )
