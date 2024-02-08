@@ -1,6 +1,7 @@
 import React from 'react'
 import './Login.css'
 import Auth from '../Auth/Auth'
+import Input from '../Input/Input'
 
 export default function Login() {
     return (
@@ -10,28 +11,20 @@ export default function Login() {
                 buttonText={'Войти'}
                 loginStatus={'Еще не зарегистрированы?'}
                 linkText={'Регистрация'}
+                authClassName={'login'}
             // onSubmit={onChange}
             >
                 <div className='input__container'>
-                <label className='input__label' for="Email">E-mail</label>
-                <input
-                    className="input"
-                    name="Email" type="email"
-                    // placeholder="Email"
-                    //   value={email}
-                    //   onChange={handleEmailChange}
-                    required
-                />
-                <label className='input__label' for="Password">Пароль</label>
-                <input className="input"
-                    name="Password"
-                    type="password"
-                    // placeholder="Пароль"
-                    //   value={password}
-                    //   onChange={handlePasswordChange}
-                    autoComplete="on"
-                    required
-                />
+                    <Input
+                        inputName={"email"}
+                        inputType={"email"}
+                        inputLabel={'E-mail'}
+                    />
+                    <Input
+                        inputName={"password"}
+                        inputType={"password"}
+                        inputLabel={'Пароль'}
+                    />
                 </div>
             </Auth>
         </>

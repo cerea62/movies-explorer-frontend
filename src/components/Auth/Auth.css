@@ -25,7 +25,6 @@
 }
 
 .auth__submit {
-    margin-top: 179px;
     width: 396px;
     height: 45px;
     font-size: 14px;
@@ -34,6 +33,30 @@
     border: none;
     color: #FFF;
     font-family: 'Inter-Medium';
+}
+
+.auth__submit_type_login {
+    margin-top: 179px;
+    /* width: 396px;
+    height: 45px;
+    font-size: 14px;
+    background-color: #FF6838;
+    border-radius: 3px;
+    border: none;
+    color: #FFF;
+    font-family: 'Inter-Medium'; */
+}
+
+.auth__submit_type_register {
+    margin-top: 91px;
+    /* width: 396px;
+    height: 45px;
+    font-size: 14px;
+    background-color: #FF6838;
+    border-radius: 3px;
+    border: none;
+    color: #FFF;
+    font-family: 'Inter-Medium'; */
 }
 
 .auth__text {
