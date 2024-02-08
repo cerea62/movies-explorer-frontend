@@ -7,4 +7,6 @@
 @import url(../src/components/Movies/Movies.css);
 @import url(../src/components/SavedMovies/SavedMovies.css);
 @import url(../src/components/Profile/Profile.css);
-@import url(../src/components/NotFoundPage/NotFoundPage.css)
+@import url(../src/components/NotFoundPage/NotFoundPage.css);
+@import url(../src/components/Auth/Auth.css);
+@import url(../src/components/Login/Login.css);
