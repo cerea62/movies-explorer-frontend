@@ -1,20 +1,25 @@
 import React from 'react'
-import './Login.css'
-import Auth from '../Auth/Auth'
-import Input from '../Input/Input'
+import Auth from './Auth'
+import Input from './Input/Input'
 
-export default function Login() {
+export default function Register() {
     return (
         <>
             <Auth
-                title={'Рады видеть!'}
-                buttonText={'Войти'}
-                loginStatus={'Еще не зарегистрированы?'}
-                linkText={'Регистрация'}
-                authClassName={'login'}
+                title={'Добро пожаловать!'}
+                buttonText={'Зарегистрироваться'}
+                loginStatus={'Уже зарегистрированы?'}
+                linkText={'Войти'}
+                authClassName={'register'}
+                authLink={'/signin'}
             // onSubmit={onChange}
             >
                 <div className='input__container'>
+                    <Input
+                        inputName={"name"}
+                        inputType={"name"}
+                        inputLabel={'Имя'}
+                    />
                     <Input
                         inputName={"email"}
                         inputType={"email"}
@@ -30,4 +35,3 @@ export default function Login() {
         </>
     )
 }
-

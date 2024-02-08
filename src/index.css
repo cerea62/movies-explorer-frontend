@@ -1,13 +1,11 @@
 @import url(../src/vendor/normalize.css);
 @import url(../src/vendor/fonts.css);
 @import url(../src/components/App/App.css);
-@import url(../src/components/Login/Login.css);
-@import url(../src/components/Register/Register.css);
 @import url(../src/components/Main/Main.css);
 @import url(../src/components/Movies/Movies.css);
 @import url(../src/components/SavedMovies/SavedMovies.css);
 @import url(../src/components/Profile/Profile.css);
 @import url(../src/components/NotFoundPage/NotFoundPage.css);
 @import url(../src/components/Auth/Auth.css);
-@import url(../src/components/Input/Input.css);
-@import url(../src/components/Login/Login.css);
+@import url(../src/components/Auth/Input/Input.css);
+@import url(../src/components/SearchForm/SearchForm.css);

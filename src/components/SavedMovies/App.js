@@ -2,12 +2,9 @@ import logo from '../../logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Login from '../Auth/Login'
-import Register from '../Auth/Register';
+import Register from '../Register/Register';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import Profile from '../Profile/Profile';
-import NotFoundPage from '../NotFoundPage/NotFoundPage'
 
 
 function App() {
