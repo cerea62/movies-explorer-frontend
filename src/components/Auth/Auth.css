@@ -34,10 +34,7 @@
     color: #FFF;
     font-family: 'Inter-Medium';
 }
-.auth__submit:hover {
-    cursor: pointer;
 
-}
 .auth__submit_type_login {
     margin-top: 179px;
 }
@@ -56,10 +53,6 @@
 .auth__link {
     color: #FF6838;
     text-decoration: none;
-
-}
-.auth__link:hover {
-    opacity: 0.7;
 }
 
 .auth__form {

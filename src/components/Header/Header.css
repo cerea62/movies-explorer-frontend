@@ -1,8 +1,22 @@
 .header {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.header_theme_color {
+    background-color: #465DFF;
+}
+
+.header__container {
+    max-width: 1140px;
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: relative;
-    margin: 28px 70px;
+    padding: 28px 70px;
 }
 
 .header__logo {

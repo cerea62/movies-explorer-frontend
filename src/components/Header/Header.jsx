@@ -1,17 +1,19 @@
 import React from 'react';
 import './Header.css';
-import logo from '../../image/logo.jpg';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
+import Logo from '../Logo/Logo'
 
 export default function Header() {
+    const location = useLocation();
+    const path = location.pathname;
     return (
         <>
-            <header className='header'>
-                <Link to='/'>
-                    <img className='header__logo' src={logo} alt='Логотип страницы' />
-                </Link>
-                <NavBar />
+            <header className={`header ${path !== '/' ? '' : 'header_theme_color'}`}>
+                <div className='header__container'>
+                    <Logo />
+                    <NavBar />
+                </div>
             </header>
         </>
     )

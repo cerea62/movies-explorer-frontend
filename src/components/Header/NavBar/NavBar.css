@@ -19,8 +19,9 @@
 
 .navbar__auth {
     display: flex;
-    list-style-type: none;
+    list-style: none;
     gap: 20px;
+    justify-content: flex-end;
 }
 
 .navbar__auth-item {
@@ -39,13 +40,21 @@
 }
 
 .navbar__movies-item_selected {
-    font-weight: 500;
+    font-weight: 900;
 }
 
 .navbar__link {
     color: #000;
     text-decoration: none;
     font-size: 13px;
+}
+
+.navbar__link_theme_color {
+    color: #fff;
+}
+
+.navbar__icon_theme_color {
+    background-color: #2BE080;
 }
 
 .navbar__link-profile {
@@ -59,7 +68,8 @@
     display: none;
     flex-direction: column;
     align-items: center;
-    background-image: url(../../../image/icon-burger.jpg);
+    background-image: url(../../../image/burger-icon.svg);
+    background-color: transparent;
     border: none;
     width: 44px;
     height: 44px;
@@ -68,14 +78,22 @@
     cursor: pointer;
 }
 
+.navbar__burger_theme_color {
+    background-color: #465DFF;
+}
+
 .navbar__icon {
     height: 30px;
     width: 26px;
     border-radius: 4px;
-    background-image: url(../../../image/main-icon.jpg);
+    background-image: url(../../../image/main-icon.svg);
     background-color: #f9f9f9;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.navbar__icon_theme_color {
+    background-color: #2BE080;
 }
 
 .navbar__burger-close {
@@ -94,6 +112,22 @@
 
 .navbar__burger-close:hover {
     opacity: 0.6;
+}
+
+.navbar__link_status_register {
+    color: #fff;
+    font-size: 12px;
+    font-family: 'Inter-Medium';
+}
+
+.navbar__link_status_login {
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Inter-Medium';
+    border-radius: 3px;
+    background-color: #2BE080;
+    padding: 6px 20px;
 }
 
 @media screen and (max-width: 850px) {
@@ -161,6 +195,14 @@
         font-family: 'Inter-Medium';
     }
 
+    .navbar__link_theme_color {
+        color: #000;
+    }
+
+    .navbar__icon_theme_color {
+        background-color: #f9f9f9;
+    }
+
     .navbar__link-profile {
         font-size: 14px;
     }
@@ -206,7 +248,7 @@
     .navbar__links {
         gap: 14px;
     }
-   
+
     .navbar__movies-item:last-child {
         margin-bottom: 10px;
     }

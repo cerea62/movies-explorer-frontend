@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import './NavBar.css'
 import { Link, useLocation } from 'react-router-dom';
 
@@ -8,70 +8,84 @@ export default function NavBar() {
     const path = location.pathname;
     // const [state] = useStore();
     // const { loggedIn } = state;
-  
+    const IsLogged = true; //временная заглушка для тестирования верстки
+
     const handleOpenMenu = () => {
-      const menu = menuRef.current;
-      menu.style.display = "flex";
+        const menu = menuRef.current;
+        menu.style.display = "flex";
     };
-  
+
     const handleCloseMenu = () => {
-      const menu = menuRef.current;
-      menu.style.display = "";
+        const menu = menuRef.current;
+        menu.style.display = "";
     };
     return (
         <>
-            <nav className="navbar__navigate navbar__navigate-movies">
-                <ul className="navbar__movies text" ref={menuRef}>
-                    
-                    <button
-                        className="navbar__burger-close"
-                        onClick={handleCloseMenu}
-                    ></button>
-                    
-                    <li
-                        className={`navbar__movies-item ${path === "/" && "navbar__movies-item_selected"
-                            }`}
-                    >
-                        <Link to="/" className="navbar__link" onClick={handleCloseMenu}>
-                            Главная
-                        </Link>
-                    </li>
-                    <li
-                        className={`navbar__movies-item ${path === "/movies" && "navbar__movies-item_selected"
-                            }`}
-                    >
-                        <Link to="/movies" className="navbar__link" onClick={handleCloseMenu}>
-                            Фильмы
-                        </Link>
-                    </li>
-                    <li
-                        className={`navbar__movies-item ${path === "/saved-movies" && "navbar__movies-item_selected"
-                            }`}
-                    >
-                        <Link
-                            to="/saved-movies"
-                            className="navbar__link"
+            {IsLogged ? (
+                <nav className="navbar__navigate navbar__navigate-movies">
+                    <ul className="navbar__movies" ref={menuRef}>
+                        <button
+                            className="navbar__burger-close"
                             onClick={handleCloseMenu}
+                        ></button>
+                        <li
+                            className={`navbar__movies-item ${path === "/" && "navbar__movies-item_selected"}`}
                         >
-                            Сохранённые фильмы
-                        </Link>
-                    </li>
-                    <li className="navbar__movies-item">
-                        <Link
-                            to="/profile"
-                            className="navbar__link navbar__link-profile color_secondary"
-                            onClick={handleCloseMenu}
+                            <Link to="/" className="navbar__link link" onClick={handleCloseMenu}>
+                                Главная
+                            </Link>
+                        </li>
+                        <li
+                            className={`navbar__movies-item ${path === "/movies" && "navbar__movies-item_selected"}`}
                         >
-                            Аккаунт
-                            <div className="navbar__icon"></div>
-                        </Link>
-                    </li>
-                </ul>
-                <button className='navbar__burger' onClick={handleOpenMenu}></button>
-            </nav>
-
-
-
+                            <Link to="/movies"
+                                className={`navbar__link ${path === "/" && "navbar__link_theme_color"} link`}
+                                onClick={handleCloseMenu}>
+                                Фильмы
+                            </Link>
+                        </li>
+                        <li
+                            className={`navbar__movies-item ${path === "/saved-movies" && "navbar__movies-item_selected"}`}
+                        >
+                            <Link
+                                to="/saved-movies"
+                                className={`navbar__link ${path === "/" && "navbar__link_theme_color"} link`}
+                                onClick={handleCloseMenu}
+                            >
+                                Сохранённые фильмы
+                            </Link>
+                        </li>
+                        <li className="navbar__movies-item">
+                            <Link
+                                to="/profile"
+                                className={`navbar__link navbar__link-profile 
+                                ${path === "/" && "navbar__link_theme_color"} link`}
+                                onClick={handleCloseMenu}
+                            >
+                                Аккаунт
+                                <div className={`navbar__icon ${path === "/" && "navbar__icon_theme_color"}`}></div>
+                            </Link>
+                        </li>
+                    </ul>
+                    <button className='navbar__burger' onClick={handleOpenMenu}></button>
+                </nav>
+            ) : (
+                <nav className="navbar__navigate">
+                    <ul className="navbar__auth">
+                        <li className="navbar__auth-item ">
+                            <Link to="/signup" className="navbar__link navbar__link_status_register link">
+                                Регистрация
+                            </Link>
+                        </li>
+                        <li className="navbar__auth-item">
+                            <Link to="/signin" className="navbar__link navbar__link_status_login link">
+                                Войти
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            )
+            }
         </>
     )
 }
