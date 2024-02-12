@@ -1,6 +1,6 @@
 import React from 'react';
 import './Auth.css';
-import authLogo from '../../image/logo.jpg';
+import logo from '../../image/logo.jpg';
 import { Link } from 'react-router-dom';
 
 
@@ -12,7 +12,7 @@ export default function Auth({ title, buttonText, onSubmit, loginStatus, linkTex
             <section className='auth'>
                 <div className="auth__container">
                     <Link to='/'>
-                    <img className='auth__logo' src={authLogo} alt="Логотип страницы" />
+                    <img className='auth__logo' src={logo} alt="Логотип страницы" />
                     </Link> 
                     <h2 className="auth__title">{title}</h2>
                     <form className="auth__form" onSubmit={onSubmit}>

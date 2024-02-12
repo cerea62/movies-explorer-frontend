@@ -1,11 +1,12 @@
 import React from 'react'
 import './Movies.css'
-import SearchForm from '../SearchForm/SearchForm'
+// import SearchForm from '../SearchForm/SearchForm'
+import Header from '../Header/Header'
 
-export default function Movie() {
+export default function Movies() {
     return (
         <>
-        <SearchForm />
+        <Header />
         </>
     )
 }

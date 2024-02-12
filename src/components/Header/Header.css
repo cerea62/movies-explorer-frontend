@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 28px 70px;
+}
+
+.header__logo {
+    height: 38px;
+    width: 38px;
+    flex-grow: 0;
+}
