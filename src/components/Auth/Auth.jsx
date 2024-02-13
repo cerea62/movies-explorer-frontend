@@ -3,12 +3,12 @@ import './Auth.css';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo'
 
+
 export default function Auth({ title, buttonText, onSubmit, loginStatus, linkText, children, authClassName, authLink }) {
     const submitClassName = "button auth__submit auth__submit_type_" + authClassName;
     return (
         <>
             <section className='auth'>
-                <div className="auth__container">
                     <Logo />
                     <h2 className="auth__title">{title}</h2>
                     <form className="auth__form" onSubmit={onSubmit}>
@@ -21,7 +21,6 @@ export default function Auth({ title, buttonText, onSubmit, loginStatus, linkTex
                             </p>
                         </div>
                     </form>
-                </div>
             </section>
         </>
     )

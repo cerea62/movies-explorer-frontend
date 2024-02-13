@@ -1,6 +1,6 @@
-import logo from '../../logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
+import Header from '../Header/Header';
 import Login from '../Auth/Login'
 import Register from '../Auth/Register';
 import Main from '../Main/Main';
@@ -13,6 +13,8 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage'
 function App() {
   return (
     <div className="page">
+      {}
+      <Header />
       <Routes>
         <Route path='/signin' element={<Login />}
         />

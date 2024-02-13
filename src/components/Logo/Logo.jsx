@@ -3,7 +3,7 @@ import './Logo.css';
 import logo from '../../image/logo.svg';
 import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Logo() {
     return (
         <Link className='link' to='/'>
             <img className='logo' src={logo} alt='Логотип страницы' />
