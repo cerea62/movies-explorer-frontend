@@ -1,0 +1,61 @@
+.movie {
+    display: flex;
+    flex-direction: column;
+    height: 271px;
+    width: 364px;
+    background: #FDFDFD;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.movie__caption {
+    margin: 14px;
+}
+
+.movie__title {
+    font-family: 'Inter-Medium';
+    font-size: 15px;
+    line-height: 18px;
+    margin: 0 0 9px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 280px;
+    width: 100%;
+}
+
+.movie__duraction {
+    font-family: 'Inter-Regular';
+    font-size: 11px;
+    line-height: 13px;
+    color: #A0A0A0;
+    margin: 0;
+}
+.movie__button {
+    position: absolute;
+    top: 19px;
+    right: 14px;
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+
+}
+.movie__like {
+    background-image: url(../../image/like-icon.svg);
+}
+.movie__like_active {
+    background-image: url(../../image/like-icon-active.svg);
+}
+.movie__button_type_delete {
+    background-image: url(../../image/delete-icon.svg);
+}
+.movie__image {}
+
+
+@media screen and (max-width: 900px) {
+    .movie {
+        height: 258px;
+        width: 339px;
+    }
+}

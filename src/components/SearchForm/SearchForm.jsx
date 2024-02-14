@@ -1,12 +1,14 @@
 import React from 'react';
 import './SearchForm.css';
 import searchIcon from '../../image/search-icon.jpg';
+import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
 
 
 export default function SearchForm() {
     return (
         <>
-            <div className='search-container'>
+            <section className='search'>
+                <div className='search-container'>
                 <form className='search__form'>
                     <img className='seach__icon' src={searchIcon} alt="Иконка лупа" />
                     <input
@@ -17,7 +19,9 @@ export default function SearchForm() {
                     />
                     <button className='search__submit'></button>
                 </form>
-            </div>
+                <FilterCheckbox />
+                </div>
+            </section>
         </>
     )
 }

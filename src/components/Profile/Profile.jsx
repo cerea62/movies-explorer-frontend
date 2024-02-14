@@ -1,6 +1,6 @@
 import React from 'react'
 import './Profile.css'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 export default function Profile() {
     return (
@@ -10,23 +10,26 @@ export default function Profile() {
                 <form className='profile__form'>
                     <div>
                         <div className='profile__form-item'>
-                            <label className='profile__input-label' for="name">Имя</label>
+                            <label className='profile__input-label' htmlFor="name">Имя</label>
                             <input className='profile__input'
                                 name="name"
+                                id='name'
                                 type="text"
                                 // placeholder="Email"
-                                value="Виталий"
+                                // value="Виталий"
                             // onChange={handleEmailChange}
                             >
                             </input>
                         </div>
 
                         <div className='profile__form-item'>
-                            <label className='profile__input-label' for="email">E-mail</label>
+                            <label className='profile__input-label' htmlFor="email">E-mail</label>
                             <input className='profile__input'
                                 name="email"
+                                id='email'
                                 type='email'
-                                value="pochta@yandex.ru">
+                                // value="pochta@yandex.ru"
+                                >
                             </input>
                         </div>
                     </div>

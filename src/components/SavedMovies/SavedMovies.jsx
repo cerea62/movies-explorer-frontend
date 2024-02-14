@@ -1,9 +1,14 @@
 import React from 'react'
 import './SavedMovies.css'
+import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import SearchForm from '../SearchForm/SearchForm'
 
-export default function SavedMovies() {
+export default function SavedMovies({ onLikeClick }) {
     return (
-        <h1 className='login'>SavedMovies</h1>
+        <>
+            <SearchForm />
+            <MoviesCardList />
+        </>
     )
 }
 
