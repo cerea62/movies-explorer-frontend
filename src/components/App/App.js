@@ -7,7 +7,8 @@ import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
-import NotFoundPage from '../NotFoundPage/NotFoundPage'
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import Footer from '../Footer/Footer';
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      {path === '/' || path === '/movies' || path === '/saved-movies' ?
+        <Footer /> : ''
+      }
     </div >
   );
 }
