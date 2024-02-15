@@ -1,0 +1,25 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import './Promo.css';
+import landingLogo from '../../../image/landing-logo.svg';
+
+
+
+export default function Promo() {
+    return (
+        <section className="promo">
+            <div className="promo__container">
+                <div className="promo__left">
+                    <div className="promo__title">
+                    <h1 className="promo__text">Учебный проект студента факультета Веб-разработки.</h1>
+                    <p className="promo__caption">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
+                    </div>
+
+                    <Link className="promo__nav">Узнать больше</Link>
+                </div>
+                <img className="promo__logo" src={landingLogo} alt="Логотип страницы в виде земного шара"/>
+            </div>
+        </section>
+
+    ) 
+}

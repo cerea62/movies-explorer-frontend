@@ -1,0 +1,126 @@
+.promo {
+    background-color: #465DFF;
+    display: flex;
+    justify-content: center;
+}
+
+.promo__container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    max-width: 1140px;
+    width: 100%;
+    padding: 75px 70px;
+}
+
+.promo__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.promo__title {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.promo__text {
+    font-family: 'Inter-Regular';
+    font-size: 50px;
+    line-height: 58px;
+    color: #FFFFFF;
+    max-width: 660px;
+    width: 100%;
+    margin: 0;
+
+}
+
+.promo__caption {
+    font-family: 'Inter-Regular';
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+}
+
+.promo__nav {
+    font-family: 'Inter-Regular';
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    padding: 10px 20px;
+    width: 89px;
+    height: 16px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.promo__logo {
+    width: 310px;
+    height: 304px;
+    margin-bottom: 145px;
+}
+
+@media screen and (max-width: 1000px) {
+    .promo__container {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1140px;
+        width: 100%;
+        padding: 140px 30px 76px;
+    }
+
+    .promo__logo {
+        margin-bottom: 48px;
+    }
+
+    .promo__title {
+        gap: 22px;
+    }
+
+    .promo__text {
+        font-size: 40px;
+        max-width: 680px;
+        text-align: center;
+    }
+
+    .promo__caption {
+        max-width: 260px;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .promo__nav {
+        align-self: center;
+        margin-top: 92px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .promo__container {
+        padding: 70px 14px 30px;
+    }
+
+    .promo__logo {
+        margin-bottom: 44px;
+        width: 210px;
+        height: 206px;
+    }
+
+    .promo__title {
+        gap: 24px;
+    }
+
+    .promo__text {
+        font-size: 30px;
+        max-width: 680px;
+    }
+    .promo__nav {
+        margin-top: 80px;
+    }
+}

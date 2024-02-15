@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     background-color: #fafafa;
+    margin-top: 89px;
 
 }
 
@@ -62,6 +63,9 @@
     }
 }
 @media screen and (max-width: 600px) {
+    .footer {
+        background-color: #fff;
+    }
     .footer_container {
         padding: 79px 10px 20px;
         

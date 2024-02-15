@@ -59,3 +59,9 @@
         width: 339px;
     }
 }
+@media screen and (max-width: 600px) {
+    .movie {
+        height: 236px;
+        width: 300px;
+    }
+}
