@@ -14,7 +14,7 @@ export default function Promo() {
                     <p className="promo__caption">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
                     </div>
 
-                    <a className="promo__nav" href='#footer'>Узнать больше</a>
+                    <a className="promo__nav" href='#about-project'>Узнать больше</a>
                 </div>
                 <img className="promo__logo" src={landingLogo} alt="Логотип страницы в виде земного шара"/>
             </div>
