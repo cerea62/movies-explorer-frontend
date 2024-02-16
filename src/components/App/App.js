@@ -36,7 +36,8 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {path === '/' || path === '/movies' || path === '/saved-movies' ?
-        <Footer /> : ''
+        <Footer
+        id='footer' /> : ''
       }
     </div >
   );

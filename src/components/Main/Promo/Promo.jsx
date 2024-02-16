@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import './Promo.css';
 import landingLogo from '../../../image/landing-logo.svg';
 
@@ -15,7 +14,7 @@ export default function Promo() {
                     <p className="promo__caption">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
                     </div>
 
-                    <Link className="promo__nav">Узнать больше</Link>
+                    <a className="promo__nav" href='#footer'>Узнать больше</a>
                 </div>
                 <img className="promo__logo" src={landingLogo} alt="Логотип страницы в виде земного шара"/>
             </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import './Footer.css'
 
-export default function Footer() {
+export default function Footer({id}) {
     return (
         <>
-            <footer className="footer">
+            <footer className="footer" id={id}>
                 <div className="footer__container">
                     <h3 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h3>
                     <hr className="footer__line" />
