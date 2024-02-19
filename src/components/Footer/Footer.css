@@ -64,14 +64,18 @@
     .footer {
         background-color: #fff;
     }
-    .footer_container {
-        padding: 79px 10px 20px;
+    .footer__container {
+        padding: 0 10px 20px;
         
+    }
+    .footer__title {
+font-size: 12px;
+line-height: 15px;
     }
     .footer__caption {
         flex-direction: column-reverse;
-        margin-top: 30px;
-        gap: 30px;
+        margin-top: 23px;
+        gap: 27px;
     }
     .footer__links {
         flex-direction: column;

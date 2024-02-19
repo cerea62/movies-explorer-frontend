@@ -77,9 +77,11 @@
     .about-project__container {
         padding: 72px 50px 90px;
     }
-.about-project__content {
-    gap: 37px;
-}
+
+    .about-project__content {
+        gap: 37px;
+    }
+
     .about-project__text {
         font-size: 12px;
         margin-top: 21px;
@@ -92,25 +94,36 @@
 }
 
 @media screen and (max-width:700px) {
+    .about-project__container {
+        padding: 53px 18px 110px;
+    }
+
     .about-project__content {
         flex-direction: column;
-        margin-top: 60px;
-        gap: 56px;
+        margin-top: 48px;
+        gap: 51px;
     }
 
     .about-project__subtitle {
         line-height: 18px;
+        line-height: 22px;
+        letter-spacing: -0.04em;
     }
 
     .about-project__text {
         font-size: 11px;
-        margin-top: 16px;
+        margin-top: 10px;
     }
 
     .about-project__duration {
-        margin-top: 60px;
+        margin-top: 55px;
     }
-
+    .about-project__time-frame {
+        max-width: 100%;
+    }
+    .about-project__duration-back {
+       width: 100px;
+    }
     .about-project__period {
         font-size: 11px;
     }

@@ -45,14 +45,35 @@
     line-height: 50px;
     letter-spacing: -0.04em;
 }
+
 @media screen and (max-width:900px) {
     .portfolio__container {
         padding: 70px 50px 125px;
 
     }
 }
+
 @media screen and (max-width:650px) {
     .portfolio__container {
-        padding: 83px 30px 125px;
+        padding: 53px 18px 100px;
+    }
+
+    .portfolio__nav {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .portfolio__nav-item {
+        padding-bottom: 19px;
+    }
+
+    .portfolio__nav-item:first-child {
+        margin-top: 23px;
+    }
+
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.04em;
     }
 }
