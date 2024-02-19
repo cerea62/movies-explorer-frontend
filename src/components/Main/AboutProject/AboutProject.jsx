@@ -11,26 +11,25 @@ export default function AboutProject() {
                 />
                 <div className="about-project__content">
                     <div>
-                        <p className="about-project__subtitle">Дипломный проект включал 5 этапов</p>
-                        <p className="about-project__text">Составление плана, работу над бэкендом,
+                        <h3 className="about-project__subtitle text">Дипломный проект включал 5 этапов</h3>
+                        <p className="about-project__text text">Составление плана, работу над бэкендом,
                             вёрстку, добавление функциональности и финальные доработки.</p>
                     </div>
                     <div>
-                        <p className="about-project__subtitle">На выполнение диплома ушло 5 недель</p>
-                        <p className="about-project__text">У каждого этапа был мягкий и жёсткий дедлайн,
+                        <h3 className="about-project__subtitle text">На выполнение диплома ушло 5 недель</h3>
+                        <p className="about-project__text text">У каждого этапа был мягкий и жёсткий дедлайн,
                             которые нужно было соблюдать, чтобы успешно защититься.</p>
                     </div>
                 </div>
                 <div className="about-project__time-frame">
                     <div className="about-project__duration about-project__duration-back">
-                    <p className="about-project__period about-project__period_theme_color">1 неделя</p>
-                    <p className="about-project__type">Back-end</p>
+                    <p className="about-project__period about-project__period_theme_color text">1 неделя</p>
+                    <p className="about-project__type text">Back-end</p>
                     </div>
                     <div className="about-project__duration about-project__duration-front">
-                    <p className="about-project__period">4 недели</p>
-                    <p className="about-project__type">Front-end</p>
+                    <p className="about-project__period text">4 недели</p>
+                    <p className="about-project__type text">Front-end</p>
                     </div>
-
                 </div>
             </div>
         </section>

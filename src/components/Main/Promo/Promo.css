@@ -10,7 +10,7 @@
     justify-content: space-between;
     max-width: 1140px;
     width: 100%;
-    padding: 75px 70px;
+    padding: 60px 70px 73px;
 }
 
 .promo__left {
@@ -22,13 +22,12 @@
 .promo__title {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 26px;
 }
 
 .promo__text {
-    font-family: 'Inter-Regular';
     font-size: 50px;
-    line-height: 58px;
+    line-height: 52px;
     color: #FFFFFF;
     max-width: 660px;
     width: 100%;
@@ -37,16 +36,16 @@
 }
 
 .promo__caption {
-    font-family: 'Inter-Regular';
     font-size: 13px;
     line-height: 16px;
     color: #FFFFFF;
     mix-blend-mode: normal;
     opacity: 0.5;
+    width: 100%;
+    max-width: 310px;
 }
 
 .promo__nav {
-    font-family: 'Inter-Regular';
     font-size: 12px;
     line-height: 16px;
     align-items: center;
@@ -62,7 +61,7 @@
 .promo__logo {
     width: 310px;
     height: 304px;
-    margin-bottom: 145px;
+    margin-bottom: 123px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -72,15 +71,15 @@
         justify-content: space-between;
         max-width: 1140px;
         width: 100%;
-        padding: 140px 30px 76px;
+        padding: 135px 30px 76px;
     }
 
     .promo__logo {
-        margin-bottom: 48px;
+        margin-bottom: 24px;
     }
 
     .promo__title {
-        gap: 22px;
+        gap: 23px;
     }
 
     .promo__text {
@@ -98,7 +97,7 @@
 
     .promo__nav {
         align-self: center;
-        margin-top: 92px;
+        margin-top: 88px;
     }
 }
 @media screen and (max-width: 600px) {

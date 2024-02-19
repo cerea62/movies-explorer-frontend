@@ -12,6 +12,8 @@
 
 .link {
   cursor: pointer;
+  color: #000;
+  text-decoration: none;
 }
 
 .link:hover {
@@ -26,4 +28,10 @@
 .button:hover {
   opacity: 0.8;
   transition: opacity 0.4s;
+}
+.text {
+  font-family: 'Inter-Regular';
+  font-style: normal;
+  font-weight: 400;
+  color: #000;
 }
