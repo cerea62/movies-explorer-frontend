@@ -29,6 +29,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 16px;
+    position: relative;
 }
 
 .profile__form-item:first-child {
@@ -49,7 +50,22 @@
     font-size: 11px;
     font-family: 'Inter-Regular';
 }
-
+.profile__input-error {
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    color: #EE3465;
+    position: absolute;
+    top: 52px;
+    right: 0;
+    display: none;
+}
+.profile__input-error:last-child {
+    top: 32px;
+}
+.profile__input-error_visible {
+    display: inline-block;
+}
 .profile__submit {
     margin-top: 220px;
     display: flex;
@@ -57,7 +73,9 @@
     justify-content: center;
     gap: 16px;
 }
-
+.profile__submit_invisible {
+display: none;
+}
 .profile__submit-button {
     font-family: 'Inter-Regular';
     font-size: 13px;

@@ -61,6 +61,7 @@ export default function SavedMovies({ onLikeClick }) {
                                 title={movie.title}
                                 link={movie.link}
                                 duration={movie.duration}
+                                onLikeClick={onLikeClick}
                             />
                         </li>
                     ))}

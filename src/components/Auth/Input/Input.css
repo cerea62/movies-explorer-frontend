@@ -8,7 +8,9 @@
     padding: 15px 0 15px 15px;
     width: 381px;
 }
-
+input_type_color {
+    color: #EE3465;
+}
 .input__label {
     font-size: 10px;
     color: #A0A0A0;
@@ -16,11 +18,27 @@
     margin: 0 0 10px;
     display: inline-block;
     box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
 .input__label:not(:first-child) {
     margin-top: 20px;
 }
 
+.input__error {
+    position: absolute;
+    top: 70px;
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+    display: none;
+}
+.input__error_visible {
+    display: inline;
+}
 @media screen and (max-width: 500px) {
     .input {
         width: 245px;
