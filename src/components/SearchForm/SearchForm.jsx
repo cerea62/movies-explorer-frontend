@@ -3,7 +3,6 @@ import './SearchForm.css';
 import searchIcon from '../../image/search-icon.jpg';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
 
-
 export default function SearchForm() {
     return (
         <>
