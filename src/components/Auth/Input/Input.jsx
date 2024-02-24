@@ -1,20 +1,26 @@
 import React from 'react'
 import './Input.css'
 
-export default function Input({inputName, inputType, inputLabel, inputPlaceholder, error, onChange, value}) {
+
+export default function Input({inputName, inputType, inputLabel, inputPlaceholder,
+     error, onChange, inputValue, inputState, isValid, minLength, maxLength, errorMesage}) {
     return (
+
         <>
         <label className='input__label' htmlFor={inputName}>{inputLabel}
                 <input
-                    className={`input ${error && "input_type_color"}`}
+                    className={`input ${{error} && "input_type_color"}`}
                     name={inputName} 
                     type={inputType}
                     placeholder={inputPlaceholder}
                     onChange={onChange}
-                    value={value}
+                    value={inputValue}
+                    disabled={inputState}
                     required
+                    minLength={minLength}
+                    maxLength={maxLength}
                 />
-                <span className={`input__error ${error && "input__error_visible"} text`}>{error}</span>
+                <span className='input__error'>{error ? errorMesage : ''}</span>
                 </label>
         </>
     )

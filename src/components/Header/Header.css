@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    padding: 28px 70px;
+    padding: 26px 70px;
 }
 
 @media screen and (max-width: 800px) {
@@ -26,6 +26,6 @@
 }
 @media screen and (max-width: 600px) {
     .header__container {
-        padding: 14px 18px;
+        padding: 14px 13px;
     }
 }

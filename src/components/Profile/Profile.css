@@ -28,13 +28,13 @@
     width: 420px;
     display: flex;
     justify-content: space-between;
-    padding-top: 16px;
+    padding-top: 17px;
     position: relative;
 }
 
 .profile__form-item:first-child {
     border-bottom: 1px solid #E8E8E8;
-    padding-bottom: 16px;
+    padding-bottom: 10px;
 
 }
 
@@ -53,18 +53,13 @@
 .profile__input-error {
     font-size: 11px;
     line-height: 13px;
-    text-align: center;
     color: #EE3465;
     position: absolute;
     top: 52px;
     right: 0;
-    display: none;
 }
 .profile__input-error:last-child {
     top: 32px;
-}
-.profile__input-error_visible {
-    display: inline-block;
 }
 .profile__submit {
     margin-top: 220px;

@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import './Profile.css'
 import { Link } from 'react-router-dom'
 import SubmitButton from '../SubmitButton/SubmitButton'
+import useFormValidation from '../../utils/useFormValidation'
+
+
 
 export default function Profile() {
 
@@ -10,6 +13,7 @@ export default function Profile() {
     const [editButtonEnable, setEditButtonEnable] = useState(true);
     const [saveButtonState, setSaveButtonState] = useState(true);
     const [inputState, setInputState] = useState(true);
+    const { values, errors, isValid, handleChange } = useFormValidation();
 
     function handleEditClick(e) {
         setEditButtonEnable(false);
@@ -19,15 +23,17 @@ export default function Profile() {
     function handleSubmit(e) {
         console.log(e);
         e.preventDefault();
-
+        setEditButtonEnable(true);
     }
     function handleEmailChange(e) {
-        setSaveButtonState(false);
+        handleChange(e);
+        // setSaveButtonState(false);
         // const value = e.target.value;
         // setEmail(value);
     }
     function handleNameChange(e) {
-        setSaveButtonState(false);
+        handleChange(e);
+        // setSaveButtonState(!isValid);
         // const value = e.target.value;
         // setName(value);
     }
@@ -35,7 +41,7 @@ export default function Profile() {
         <>
             <section className='profile'>
                 <h1 className='profile__title'>Привет,!</h1>
-                <form className='profile__form' onSubmit={handleSubmit} noValidate>
+                <form className='profile__form form' onSubmit={handleSubmit} noValidate>
                     <div>
                         <div className='profile__form-item'>
                             <label className='profile__input-label' htmlFor="name">Имя</label>
@@ -44,11 +50,18 @@ export default function Profile() {
                                 id='name'
                                 type="text"
                                 placeholder="Имя"
-                                // value={name}
+                                value={values.name || ''}
+                                minLength='2'
+                                maxLength='30'
+                                required
+                                title='Разрешено использовать латиницу, кириллицу, пробел или дефис'
+                                pattern='^[A-Za-zА-Яа-яЁё /s -]+$'
                                 onChange={handleNameChange}
                                 disabled={inputState}
                             />
-                            <span className='profile__input-error'> Ошибка!</span>
+                            <span id='name-error' className='profile__input-error'>
+                                {!isValid ? errors.name : ''}
+                            </span>
                         </div>
                         <div className='profile__form-item'>
                             <label className='profile__input-label' htmlFor="email">E-mail</label>
@@ -56,12 +69,15 @@ export default function Profile() {
                                 name="email"
                                 id='email'
                                 type='email'
+                                minLength='2'
+                                maxLength='30'
+                                required
                                 placeholder='E-mail'
-                                // value={email}
+                                value={values.email || ''}
                                 onChange={handleEmailChange}
                                 disabled={inputState}
                             />
-                            <span className='profile__input-error'> Ошибка!</span>
+                            <span className='profile__input-error'>{!isValid ? errors.email : ''}</span>
                         </div>
                     </div>
                     {editButtonEnable ? (
@@ -77,7 +93,7 @@ export default function Profile() {
                                 linkText={''}
                                 authClassName={'profile'}
                                 authLink={'/signin'}
-                                isDisabled={saveButtonState}
+                                isDisabled={!isValid}
                             />
 
                         )}

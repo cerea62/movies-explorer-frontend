@@ -6,7 +6,7 @@ import './MovieCard.css';
 export default function MovieCard({ movie, title, duration, link }) {
     const location = useLocation();
     const path = location.pathname;
-    const isLiked = true; //временная заглушка
+    const isLiked = false; //временная заглушка
 
     const movieLikeButtonClassName = (
         `button movie__button movie__like ${isLiked ? 'movie__like_active' : ''}`);

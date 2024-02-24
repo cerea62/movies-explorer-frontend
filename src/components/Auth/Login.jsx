@@ -1,35 +1,19 @@
 import React from 'react'
-import { useState } from 'react';
 import Auth from './Auth'
 import Input from './Input/Input'
-import { validate } from 'react-email-validator';
 import SubmitButton from '../SubmitButton/SubmitButton';
+import useFormValidation from '../../utils/useFormValidation';
 
 export default function Login() {
-    const [error, setError] = useState({ email: "", password: "" });
-    const [formData, setFormData] = useState({ email: "", password: "" });
+    const { values, errors, isValid, handleChange } = useFormValidation();
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        setError(validateValue(formData));
-        // setError({ ...error, [e.target.name]: e.target.validationMessage });
-    };
-    const validateValue = (formData) => {
-        let error = {};
-        if (!validate(formData.email)) {
-            error.email = "Некорректный e-mail";
-        }
-        if (formData.password.length <= 5) {
-            error.password = "Пароль должен быть не короче 5 символов";
-        }
-        return error;
-    };
+    function onChange(e) {
+        handleChange(e);
+    }
 
-    const handleSubmit = (e) => {
+    function handleSubmit(e) {
         e.preventDefault();
-        setError(validateValue(formData));
-    };
-
+    }
     return (
         <>
             <Auth
@@ -42,18 +26,24 @@ export default function Login() {
                         inputType={"email"}
                         inputLabel={'E-mail'}
                         inputPlaceholder={'E-mail'}
-                        value={formData.email}
-                        onChange={handleChange}
-                        error={error.email}
+                        inputValue={values.email || ''}
+                        onChange={onChange}
+                        error={errors.email}
+                        errorMesage = {'Некорректный e-mail'}
+                        isValid={isValid}
+
                     />
                     <Input
                         inputName={"password"}
                         inputType={"password"}
                         inputLabel={'Пароль'}
-                        inputPlaceholder={'password'}
-                        value={formData.password}
-                        onChange={handleChange}
-                        error={error.password}
+                        inputPlaceholder={'Пароль'}
+                        minLength={6}
+                        inputValue={values.password || ''}
+                        onChange={onChange}
+                        error={errors.password}
+                        errorMesage = {'Некорректный пароль'}
+                        isValid={isValid}
                     />
                 </div>
                 <SubmitButton
@@ -61,7 +51,9 @@ export default function Login() {
                     loginStatus={'Еще не зарегистрированы?'}
                     linkText={'Регистрация'}
                     authClassName={'login'}
-                    authLink={'/signup'} />
+                    authLink={'/signup'}
+                    isDisabled={!isValid}
+                />
             </Auth>
         </>
     )

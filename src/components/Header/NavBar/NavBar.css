@@ -1,5 +1,6 @@
 .navbar__navigate {
     box-sizing: border-box;
+    height: 100%;
 }
 
 .navbar__navigate-movies {
@@ -20,8 +21,12 @@
 .navbar__auth {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 30px;
     justify-content: flex-end;
+    margin: 0;
+    padding-top: 8px;
+
+    /* padding: 0; */
 }
 
 .navbar__auth-item {
@@ -61,7 +66,7 @@
     display: flex;
     align-items: center;
     padding: 0;
-    gap: 17px;
+    gap: 23px;
 }
 
 .navbar__burger {
@@ -127,7 +132,7 @@
     font-family: 'Inter-Medium';
     border-radius: 3px;
     background-color: #2BE080;
-    padding: 6px 20px;
+    padding: 8px 20px 9px;
 }
 
 @media screen and (max-width: 850px) {
@@ -191,7 +196,8 @@
     }
 
     .navbar__link {
-        font-size: 18px;
+        font-size: 12px;
+        line-height: 16px;
         font-family: 'Inter-Medium';
     }
 
@@ -213,6 +219,10 @@
 }
 
 @media screen and (max-width: 640px) {
+    .navbar__link {
+        font-size: 10px;
+    }
+
     .navbar__movies {
         width: 100%;
     }
@@ -228,7 +238,7 @@
     }
 
     .navbar__auth {
-        gap: 14px;
+        gap: 2px;
     }
 
     .navbar__movies {

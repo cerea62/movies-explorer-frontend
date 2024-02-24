@@ -34,10 +34,7 @@ input_type_color {
     font-size: 10px;
     line-height: 12px;
     color: #EE3465;
-    display: none;
-}
-.input__error_visible {
-    display: inline;
+    background-color: #fff;
 }
 @media screen and (max-width: 500px) {
     .input {

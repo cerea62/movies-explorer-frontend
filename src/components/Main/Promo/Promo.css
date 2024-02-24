@@ -10,7 +10,7 @@
     justify-content: space-between;
     max-width: 1140px;
     width: 100%;
-    padding: 60px 70px 73px;
+    padding: 60px 70px 76px;
 }
 
 .promo__left {
@@ -27,11 +27,11 @@
 
 .promo__text {
     font-size: 50px;
-    line-height: 52px;
+    line-height: 57px;
     color: #FFFFFF;
-    max-width: 660px;
+    max-width: 650px;
     width: 100%;
-    margin: 0;
+    margin: 4px 0 0;
 
 }
 
@@ -85,7 +85,9 @@
     .promo__text {
         font-size: 40px;
         max-width: 680px;
+        line-height: 52px;
         text-align: center;
+        margin: 0;
     }
 
     .promo__caption {
@@ -119,7 +121,7 @@
 
     .promo__text {
         font-size: 30px;
-        max-width: 680px;
+        max-width: 450px;
         line-height: 38px;
         letter-spacing: -0.04em;
     }
