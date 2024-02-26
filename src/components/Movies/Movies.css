@@ -1,4 +1,4 @@
-.movie {
-    font-size: 20px;
-    color: black;
+.movies {
+display: flex;
+flex-direction: column;
 }

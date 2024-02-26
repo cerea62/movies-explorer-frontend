@@ -35,9 +35,7 @@
     display: none;
 }
 
-.navbar__movies-item_selected {
-    font-weight: 900;
-}
+
 
 .navbar__link {
     font-family: 'Inter', Arial, sans-serif;
@@ -47,6 +45,10 @@
     line-height: 18px;
     color: #000;
     text-decoration: none;
+}
+
+.navbar__link_selected {
+    font-weight: 500;
 }
 
 .navbar__link_theme_color {
@@ -112,12 +114,14 @@
     background-color: #f9f9f9;
     position: relative;
 }
+
 .navbar__icon-img {
     object-fit: contain;
     position: absolute;
     top: 8px;
     right: 7px;
 }
+
 .navbar__icon_theme_color {
     background-color: #2BE080;
 }

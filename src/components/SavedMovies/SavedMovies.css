@@ -1,4 +1,4 @@
-.login {
-    font-size: 20px;
-    color: black;
-}
+.saved-movies {
+    display: flex;
+    flex-direction: column;
+    }

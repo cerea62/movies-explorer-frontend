@@ -20,6 +20,7 @@ export default function NavBar() {
         const menu = menuRef.current;
         menu.style.display = "";
     };
+    console.log(path)
     return (
         <>
             {IsLogged ? (
@@ -30,46 +31,46 @@ export default function NavBar() {
                             onClick={handleCloseMenu}
                         ></button>
                         <ul className='navbar__list'>
-                        <li
-                            className={`navbar__movies-item ${path === "/" && "navbar__movies-item_selected"}`}
-                        >
-                            <Link to="/" className="navbar__link link" onClick={handleCloseMenu}>
-                                Главная
-                            </Link>
-                        </li>
-                        <li
-                            className={`navbar__movies-item ${path === "/movies" && "navbar__movies-item_selected"}`}
-                        >
-                            <Link to="/movies"
-                                className={`navbar__link ${path === "/" && "navbar__link_theme_color"} link`}
-                                onClick={handleCloseMenu}>
-                                Фильмы
-                            </Link>
-                        </li>
-                        <li
-                            className={`navbar__movies-item ${path === "/saved-movies" && "navbar__movies-item_selected"}`}
-                        >
-                            <Link
-                                to="/saved-movies"
-                                className={`navbar__link ${path === "/" && "navbar__link_theme_color"} link`}
-                                onClick={handleCloseMenu}
+                            <li
+                                className={`navbar__movies-item ${path === "/" && "navbar__movies-item_selected"}`}
                             >
-                                Сохранённые фильмы
-                            </Link>
-                        </li>
-                        <li className="navbar__movies-item">
-                            <Link
-                                to="/profile"
-                                className={`navbar__link navbar__link-profile 
+                                <Link to="/" className="navbar__link link" onClick={handleCloseMenu}>
+                                    Главная
+                                </Link>
+                            </li>
+                            <li
+                                className='navbar__movies-item'>
+                                <Link to="/movies"
+                                    className={`navbar__link ${path === "/" && "navbar__link_theme_color"}
+                                      ${path === "/movies" && "navbar__link_selected"} link`}
+                                    onClick={handleCloseMenu}>
+                                    Фильмы
+                                </Link>
+                            </li>
+                            <li
+                                className='navbar__movies-item'>
+                                <Link
+                                    to="/saved-movies"
+                                    className={`navbar__link ${path === "/" && "navbar__link_theme_color"}
+                                      ${path === "/saved-movies" && "navbar__link_selected"} link`}
+                                    onClick={handleCloseMenu}
+                                >
+                                    Сохранённые фильмы
+                                </Link>
+                            </li>
+                            <li className="navbar__movies-item">
+                                <Link
+                                    to="/profile"
+                                    className={`navbar__link navbar__link-profile 
                                 ${path === "/" && "navbar__link_theme_color"} link`}
-                                onClick={handleCloseMenu}
-                            >
-                                Аккаунт
-                                <div className={`navbar__icon ${path === "/" && "navbar__icon_theme_color"}`}>
-                                    <img className='navbar__icon-img' src={mainIcon} alt='Иконка с изображением человечка'></img>
-                                </div>
-                            </Link>
-                        </li>
+                                    onClick={handleCloseMenu}
+                                >
+                                    Аккаунт
+                                    <div className={`navbar__icon ${path === "/" && "navbar__icon_theme_color"}`}>
+                                        <img className='navbar__icon-img' src={mainIcon} alt='Иконка с изображением человечка'></img>
+                                    </div>
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                     <button className='navbar__burger' onClick={handleOpenMenu}></button>
