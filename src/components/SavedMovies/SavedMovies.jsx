@@ -6,8 +6,10 @@ import SearchForm from '../SearchForm/SearchForm'
 export default function SavedMovies({ onLikeClick }) {
     return (
         <>
-            <SearchForm />
-            <MoviesCardList />
+            <main className='saved-movies'>
+                <SearchForm />
+                <MoviesCardList />
+            </main>
         </>
     )
 }

@@ -54,11 +54,6 @@
 .movie__button_type_delete {
     background-image: url(../../image/delete-icon.svg);
 }
-/* .movie__image {
-    width: 364px;
-    height: 203px;
-} */
-
 
 @media screen and (max-width: 900px) {
     .movie {

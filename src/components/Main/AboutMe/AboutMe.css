@@ -28,6 +28,9 @@
 }
 
 .about-me__name {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 50px;
     line-height: 58px;
     letter-spacing: -0.04em;
@@ -47,6 +50,9 @@
 }
 
 .about-me__resume {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 22px;
     mix-blend-mode: normal;
@@ -73,8 +79,6 @@
 @media screen and (max-width:900px) {
     .about-me__container {
         padding: 71px 50px 0;
-
-
     }
 
     .about-me__content {
@@ -89,9 +93,6 @@
     }
 
     .about-me__job {
-        font-family: 'Inter', Arial, sans-serif;
-        font-style: normal;
-        font-weight: 500;
         font-size: 12px;
         line-height: 18px;
         margin-bottom: 19px;
@@ -105,7 +106,7 @@
 
 @media screen and (max-width:650px) {
     .about-me__container {
-        padding: 30px 18px 0;
+        padding: 35px 18px 0;
     }
 
     .about-me__content {

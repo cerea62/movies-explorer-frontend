@@ -10,6 +10,7 @@ export default function Input({inputName, inputType, inputLabel, inputPlaceholde
         <label className='input__label' htmlFor={inputName}>{inputLabel}
                 <input
                     className={`input ${{error} && "input_type_color"}`}
+                    id={inputName}
                     name={inputName} 
                     type={inputType}
                     placeholder={inputPlaceholder}

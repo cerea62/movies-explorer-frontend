@@ -67,4 +67,7 @@
     .auth {
         max-width: 260px;
     }
+    .auth__form {
+        margin-top: 36px;
+    }
 }

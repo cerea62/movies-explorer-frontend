@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import './NavBar.css'
 import { Link, useLocation } from 'react-router-dom';
+import mainIcon from '../../../image/main-icon.svg'
 
 export default function NavBar() {
     const menuRef = useRef();
@@ -64,7 +65,9 @@ export default function NavBar() {
                                 onClick={handleCloseMenu}
                             >
                                 Аккаунт
-                                <div className={`navbar__icon ${path === "/" && "navbar__icon_theme_color"}`}></div>
+                                <div className={`navbar__icon ${path === "/" && "navbar__icon_theme_color"}`}>
+                                    <img className='navbar__icon-img' src={mainIcon} alt='Иконка с изображением человечка'></img>
+                                </div>
                             </Link>
                         </li>
                         </ul>
