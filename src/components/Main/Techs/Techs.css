@@ -43,6 +43,11 @@
 }
 
 .techs__item {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
     background: #E8E8E8;
     border-radius: 10px;
     padding-top: 21px;
@@ -50,6 +55,7 @@
     max-width: 90px;
     width: 100%;
     text-align: center;
+    color: #000;
 }
 
 @media screen and (max-width:900px) {

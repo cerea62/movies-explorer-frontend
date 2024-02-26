@@ -13,7 +13,9 @@
 }
 
 .movie__title {
-     font-family: 'Inter-Medium';
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
     font-size: 15px;
     line-height: 18px;
     margin: 0 0 9px 0;
@@ -25,7 +27,9 @@
 }
 
 .movie__duraction {
-    font-family: 'Inter-Regular';
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 11px;
     line-height: 13px;
     color: #A0A0A0;
@@ -50,10 +54,10 @@
 .movie__button_type_delete {
     background-image: url(../../image/delete-icon.svg);
 }
-.movie__image {
+/* .movie__image {
     width: 364px;
     height: 203px;
-}
+} */
 
 
 @media screen and (max-width: 900px) {

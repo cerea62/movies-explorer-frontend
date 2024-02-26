@@ -25,8 +25,6 @@
     justify-content: flex-end;
     margin: 0;
     padding-top: 8px;
-
-    /* padding: 0; */
 }
 
 .navbar__auth-item {
@@ -35,13 +33,6 @@
 
 .navbar__movies-item:nth-child(2) {
     display: none;
-}
-
-.navbar__movies-item:last-child {
-    display: flex;
-    text-align: center;
-    flex: 1;
-    justify-content: flex-end;
 }
 
 .navbar__movies-item_selected {
@@ -71,20 +62,41 @@
 
 .navbar__burger {
     display: none;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     background-image: url(../../../image/burger-icon.svg);
     background-color: transparent;
     border: none;
     width: 44px;
     height: 44px;
-    gap: 7px;
-    justify-content: center;
     cursor: pointer;
+
+}
+
+.navbar__burger:hover {
+    opacity: 0.8;
+    transition: opacity 0.4s;
 }
 
 .navbar__burger_theme_color {
     background-color: #465DFF;
+}
+
+.navbar__list {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    gap: 7px;
+}
+
+.navbar__movies-item:last-of-type {
+    margin-left: auto;
+}
+.navbar__list:last-child {
+    flex: 1;
+
 }
 
 .navbar__icon {
@@ -122,14 +134,14 @@
 .navbar__link_status_register {
     color: #fff;
     font-size: 12px;
-    font-family: 'Inter-Medium';
+    font-weight: 500;
 }
 
 .navbar__link_status_login {
     color: #000;
     text-align: center;
     font-size: 12px;
-    font-family: 'Inter-Medium';
+    font-weight: 500;
     border-radius: 3px;
     background-color: #2BE080;
     padding: 8px 20px 9px;
@@ -145,7 +157,22 @@
         margin-bottom: 83px;
         padding: 0;
     }
-
+    .navbar__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        gap: 7px;
+        cursor: pointer;
+    }
+    .navbar__movies-item:last-of-type {
+        margin-top: auto;
+        margin-left: 0;
+    }
+    .navbar__list:last-child {
+        flex: 1;
+    }
     .navbar__navigate-movies {
         display: flex;
         justify-content: flex-end;
@@ -178,6 +205,8 @@
         background-color: rgba(0, 0, 0, 0.3);
     }
 
+    .navbar__list {}
+
     .navbar__movies-item {
         line-height: calc(22 / 18);
     }
@@ -198,7 +227,7 @@
     .navbar__link {
         font-size: 12px;
         line-height: 16px;
-        font-family: 'Inter-Medium';
+        font-weight: 500;
     }
 
     .navbar__link_theme_color {

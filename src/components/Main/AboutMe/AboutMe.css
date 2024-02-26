@@ -36,7 +36,9 @@
 }
 
 .about-me__job {
-    font-family: 'Inter_Medium';
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
     font-size: 18px;
     line-height: 20px;
     mix-blend-mode: normal;
@@ -52,7 +54,10 @@
 }
 
 .about-me__link {
-    font-family: 'Inter_Medium';
+    color: #000;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     text-decoration: none;
@@ -84,7 +89,9 @@
     }
 
     .about-me__job {
-        font-family: 'Inter-Medium';
+        font-family: 'Inter', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 500;
         font-size: 12px;
         line-height: 18px;
         margin-bottom: 19px;
@@ -108,16 +115,19 @@
         margin-top: 44px;
         gap: 41px;
     }
-.about-me__name {
-font-size: 30px;
-line-height: 36px;
-letter-spacing: -0.04em;
-}
+
+    .about-me__name {
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: -0.04em;
+    }
+
     .about-me__avatar {
         height: 352px;
         width: 292px;
     }
-.about-me__link {
-    margin-top: 8px;
-}
+
+    .about-me__link {
+        margin-top: 8px;
+    }
 }

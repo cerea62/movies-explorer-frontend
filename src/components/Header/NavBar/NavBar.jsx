@@ -23,11 +23,12 @@ export default function NavBar() {
         <>
             {IsLogged ? (
                 <nav className="navbar__navigate navbar__navigate-movies">
-                    <ul className="navbar__movies" ref={menuRef}>
+                    <div className="navbar__movies" ref={menuRef}>
                         <button
                             className="navbar__burger-close"
                             onClick={handleCloseMenu}
                         ></button>
+                        <ul className='navbar__list'>
                         <li
                             className={`navbar__movies-item ${path === "/" && "navbar__movies-item_selected"}`}
                         >
@@ -66,7 +67,8 @@ export default function NavBar() {
                                 <div className={`navbar__icon ${path === "/" && "navbar__icon_theme_color"}`}></div>
                             </Link>
                         </li>
-                    </ul>
+                        </ul>
+                    </div>
                     <button className='navbar__burger' onClick={handleOpenMenu}></button>
                 </nav>
             ) : (

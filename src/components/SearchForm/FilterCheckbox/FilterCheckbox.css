@@ -55,7 +55,9 @@
 }
 
 .checkbox__caption {
-    font-family: 'Inter-Regular';
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 18px;
     color: #000000;
@@ -63,6 +65,9 @@
 }
 
 @media screen and (max-width: 600px) {
+    .checkbox {
+        margin-top: 40px;
+    }
     .checkbox__caption {
         font-size: 11px;
     }

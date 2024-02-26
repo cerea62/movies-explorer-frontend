@@ -31,7 +31,9 @@
     border-radius: 6px;
     margin-top: 63px;
     height: 36px;
-    font-family: 'Inter-Regular';
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 12px;
     line-height: 15px;
 }
@@ -78,10 +80,12 @@
     }
 }
 @media screen and (max-width: 600px) {
-
+    .movies__items {
+        gap: 16px;
+    }
     .movies__add-items {
         align-self: center;
-        margin-top: 63px;
+        margin-top: 80px;
         margin-bottom: 80px;
     }
 }

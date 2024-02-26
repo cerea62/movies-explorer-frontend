@@ -42,7 +42,7 @@ export default function MovieCard({ movie, title, duration, link }) {
                         />}
 
                 </div>
-                <img className="movie__image" src={link} alt='#' />
+                <img className="movie__image" src={link} alt='Изображение-постер' />
             </div>
         </>
     )

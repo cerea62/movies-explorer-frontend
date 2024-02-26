@@ -42,7 +42,7 @@ export default function Profile() {
             <section className='profile'>
                 <h1 className='profile__title'>Привет,!</h1>
                 <form className='profile__form form' onSubmit={handleSubmit} noValidate>
-                    <div>
+                    <div className='profile__form-container'>
                         <div className='profile__form-item'>
                             <label className='profile__input-label' htmlFor="name">Имя</label>
                             <input className='profile__input'
