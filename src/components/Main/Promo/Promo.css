@@ -10,7 +10,7 @@
     justify-content: space-between;
     max-width: 1140px;
     width: 100%;
-    padding: 50px 70px 76px;
+    padding: 52px 70px 76px;
 }
 
 .promo__left {
@@ -71,15 +71,15 @@
         justify-content: space-between;
         max-width: 1140px;
         width: 100%;
-        padding: 135px 30px 76px;
+        padding: 110px 30px 78px;
     }
 
     .promo__logo {
-        margin-bottom: 24px;
+        margin-bottom: 28px;
     }
 
     .promo__title {
-        gap: 23px;
+        gap: 19px;
     }
 
     .promo__text {
@@ -105,7 +105,7 @@
 
 @media screen and (max-width: 600px) {
     .promo__container {
-        padding: 70px 14px 30px;
+        padding: 52px 14px 28px;
     }
 
     .promo__logo {
@@ -127,6 +127,6 @@
     }
 
     .promo__nav {
-        margin-top: 78px;
+        margin-top: 80px;
     }
 }

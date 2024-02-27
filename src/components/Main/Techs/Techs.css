@@ -35,7 +35,7 @@
 }
 
 .techs__items {
-    padding: 70px 0 82px;
+    padding: 70px 0 85px;
     list-style: none;
     display: flex;
     gap: 10px;
@@ -50,12 +50,13 @@
     line-height: 17px;
     background: #E8E8E8;
     border-radius: 10px;
-    padding-top: 21px;
+    padding-top: 23px;
     padding-bottom: 22px;
     max-width: 90px;
     width: 100%;
     text-align: center;
     color: #000;
+    letter-spacing: -0.04em;
 }
 
 @media screen and (max-width:900px) {
@@ -109,13 +110,16 @@
 }
 
 @media screen and (max-width:500px) {
+    .techs__container {
+        padding-top: 5px;
+    }
     .techs__items {
         padding-left: 10px;
-        gap: 10px;
     }
 
     .techs__item {
         font-size: 12px;
         line-height: 15px;
+        padding: 20px auto 22px;
     }
 }

@@ -13,7 +13,7 @@
 }
 
 .portfolio__title {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -31,8 +31,7 @@
 }
 
 .portfolio__nav-item {
-    padding-bottom: 17px;
-    padding-top: 20px;
+    padding: 20px 5px 18px 0;
     border-bottom: 1px solid #E8E8E8;
 }
 
@@ -47,8 +46,8 @@
     background-image: url(../../../image/pointer-icon.svg);
     background-size: 18px 17px;
     background-repeat: no-repeat;
-    background-position: right;
-    font-family: 'Inter';
+    background-position: right 19px;
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     color: #000;
@@ -59,13 +58,18 @@
 
 @media screen and (max-width:900px) {
     .portfolio__container {
-        padding: 90px 50px 125px;
+        padding: 90px 50px 120px;
 
     }
 }
 
 .portfolio__nav {
     margin-top: 0;
+}
+
+.portfolio__link {
+    font-size: 28px;
+
 }
 
 @media screen and (max-width:650px) {
@@ -91,5 +95,6 @@
         font-size: 18px;
         line-height: 28px;
         letter-spacing: -0.04em;
+        background-position: right;
     }
 }
