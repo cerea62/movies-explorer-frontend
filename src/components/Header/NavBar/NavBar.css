@@ -74,8 +74,8 @@
     background-size: contain;
     background-repeat: no-repeat;
     border: none;
-    width: 44px;
-    height: 44px;
+    width: 47px;
+    height: 56px;
     cursor: pointer;
     padding: 0;
 
@@ -91,11 +91,12 @@
 }
 
 .navbar__list {
+    margin-top: 13px;
     display: flex;
     align-items: center;
     list-style: none;
     padding: 0;
-    gap: 16px;
+    gap: 18px;
 }
 
 .navbar__movies-item:last-of-type {
@@ -162,12 +163,12 @@
 
 @media screen and (max-width: 850px) {
     .navbar {
-        padding: 18px 30px;
+        padding: 18px 0;
     }
 
     .navbar__burger-close {
         display: block;
-        margin-bottom: 83px;
+        margin-bottom: 81px;
         padding: 0;
     }
 
@@ -177,7 +178,7 @@
         align-items: center;
         list-style: none;
         padding: 0;
-        gap: 24px;
+        gap: 28px;
         cursor: pointer;
         margin: 0;
     }
@@ -202,7 +203,7 @@
 
     .navbar__movies {
         position: fixed;
-        padding: 30px 28px 30px 30px;
+        padding: 54px 27px 30px 30px;
         content: "";
         top: 0;
         right: 0;
@@ -283,9 +284,12 @@
 
 @media screen and (max-width: 375px) {
     .navbar {
-        padding: 18px 14px;
+        padding: 13px 0px 20px;
     }
-
+.navbar__burger {
+    height: 44px;
+    width: 42px;
+}
     .navbar__auth {
         gap: 2px;
     }

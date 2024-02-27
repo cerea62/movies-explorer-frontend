@@ -7,7 +7,7 @@
     max-width: 1140px;
     width: 100%;
     position: relative;
-    padding: 46px 70px 64px;
+    padding: 49px 70px 64px;
 }
 
 .seach__icon {
@@ -63,18 +63,26 @@
 }
 
 @media screen and (max-width: 900px) {
+    .search__submit {
+        width: 42px;
+        height: 35px;
+    }
     .search-container {
-        padding: 80px 30px;
+        padding: 55px 30px 80px;
     }
 
     .search__form {
         margin: 0;
     }
+    .search__field {
+        padding-bottom: 12px;
+        padding-left: 38px;
+    }
 }
 
 @media screen and (max-width: 500px) {
     .search-container {
-        padding: 90px 15px 42px;
+        padding: 74px 15px 40px;
     }
 
     .seach__icon {

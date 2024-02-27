@@ -69,9 +69,9 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 770px) {
     .movies__container {
-        padding: 0 10px 65px;
+        padding: 0 0px 65px;
     }
     .movies__add-items {
         align-self: center;

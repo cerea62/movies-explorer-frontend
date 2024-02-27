@@ -40,7 +40,7 @@ export default function Profile() {
     return (
         <>
             <section className='profile'>
-                <h1 className='profile__title'>Привет,!</h1>
+                <h1 className='profile__title'>Привет, Виталий!</h1>
                 <form className='profile__form form' onSubmit={handleSubmit} noValidate>
                     <div className='profile__form-container'>
                         <div className='profile__form-item'>
