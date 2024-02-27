@@ -24,7 +24,7 @@ export default function NavBar() {
     return (
         <>
             {IsLogged ? (
-                <nav className="navbar__navigate navbar__navigate-movies">
+                <nav className="navbar navbar__navigate-movies">
                     <div className="navbar__movies" ref={menuRef}>
                         <button
                             className="navbar__burger-close"
