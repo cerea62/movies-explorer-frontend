@@ -9,7 +9,7 @@ export default function NotFoundPage() {
     }
     return (
         <>
-                <div className='error__container'>
+                <div className='error'>
                     <div>
                     <h1 className='error__title'>404</h1>
                     <p className='error__caption'>Страница не найдена</p>

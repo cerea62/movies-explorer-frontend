@@ -20,7 +20,7 @@ export default function Login() {
                 title={'Рады видеть!'}
                 onSubmit={handleSubmit}
             >
-                <div className='input__container'>
+                <div className='input-container'>
                     <Input
                         inputName={"email"}
                         inputType={"email"}

@@ -9,7 +9,7 @@ export default function SearchForm() {
             <section className='search'>
                 <div className='search-container'>
                 <form className='search__form'>
-                    <img className='seach__icon' src={searchIcon} alt="Иконка лупа" />
+                    <img className='search__form-icon' src={searchIcon} alt="Иконка лупа" />
                     <input
                         className='search__field'
                         name="movie"

@@ -14,13 +14,13 @@
 input_type_color {
     color: #EE3465;
 }
-.input__fieldset {
+.input-container__fieldset {
     padding: 0;
     margin: 0;
     border: none;
     height: 88px;
 }
-.input__label {
+.input-container__label {
     font-size: 10px;
     color: #A0A0A0;
     width: 100%;
@@ -33,11 +33,11 @@ input_type_color {
     gap: 10px;
 }
 
-.input__label:not(:first-child) {
+.input-container__label:not(:first-child) {
     margin-top: 20px;
 }
 
-.input__error {
+.input-container__error {
     font-size: 10px;
     line-height: 12px;
     color: #EE3465;
@@ -49,7 +49,7 @@ input_type_color {
         width: 245px;
     }
 
-    .input__label:not(:first-child) {
+    .input-container__label:not(:first-child) {
         margin-top: 22px;
     }
 }

@@ -48,9 +48,9 @@ export default function MoviesCardList({ onLikeClick }) {
 
     return (
         <>
-            <section className='movies__container'>
+            <section className='movies-container'>
                 {path === '/saved-movies' ? (
-                        <ul className="movies__items">
+                        <ul className="movies-container__items">
                             {movies.map(movie => (
                                 <li key={movie._id} className="movie">
                                     <MovieCard
@@ -66,7 +66,7 @@ export default function MoviesCardList({ onLikeClick }) {
                 )
                     : (
                         <div>
-                            <ul className="movies__items">
+                            <ul className="movies-container__items">
                                 {movies.slice(0, countMovies).map(movie => (
                                     <li key={movie._id} className="movie">
                                         <MovieCard
@@ -80,7 +80,7 @@ export default function MoviesCardList({ onLikeClick }) {
                                 ))}
                             </ul>
                             {movies.length > countMovies ?
-                                (<button className='movies__add-items button' onClick={showMore}>Ещё</button>)
+                                (<button className='movies-container__add-items button' onClick={showMore}>Ещё</button>)
                                 : ('')
                             }
                         </div>

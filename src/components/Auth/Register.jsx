@@ -21,7 +21,7 @@ export default function Register() {
                 title={'Добро пожаловать!'}
                 onSubmit={handleSubmit}
             >
-                <div className='input__container'>
+                <div className='input-container'>
                     <Input
                         inputName={"name"}
                         inputType={"name"}
