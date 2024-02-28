@@ -3,7 +3,7 @@
     height: 100%;
 }
 
-.navbar__navigate-movies {
+.navbar_navigate-movies {
     width: 100%;
     padding-left: 44px;
 }
@@ -196,7 +196,7 @@
         flex: 1;
     }
 
-    .navbar__navigate-movies {
+    .navbar_navigate-movies {
         display: flex;
         justify-content: flex-end;
     }
