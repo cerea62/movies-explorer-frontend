@@ -94,6 +94,9 @@
     .portfolio__nav-item:first-child {
         margin-top: 23px;
     }
+    .portfolio__nav {
+        margin-top: 0;
+    }
 
     .portfolio__link {
         background-size: 11px;

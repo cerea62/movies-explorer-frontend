@@ -20,7 +20,7 @@
 }
 
 .submit__button_type_register {
-    margin-top: 91px;
+    margin-top: 70px;
 }
 
 .submit__button_type_profile {
@@ -64,6 +64,10 @@
 @media screen and (max-width: 800px) {
     .submit__button_type_profile {
         margin-bottom: 308px;
+    }
+
+    .submit__button_type_register {
+        margin-top: 71px;
     }
 }
 @media screen and (max-width: 700px) {

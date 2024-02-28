@@ -22,7 +22,7 @@
 .promo__title {
     display: flex;
     flex-direction: column;
-    gap: 26px;
+    gap: 23px;
 }
 
 .promo__text {

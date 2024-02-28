@@ -69,16 +69,23 @@
 
     .techs__title {
         margin-top: 60px;
-        margin-bottom: 6px;
+        margin-bottom: 10px;
+    }
+
+    .techs__caption {
+        font-size: 12px;
+        line-height: 18px;
     }
 
     .techs__items {
-        padding-top: 50px;
+        padding-top: 56px;
         padding-bottom: 72px;
     }
 
     .techs__item {
         max-width: 84px;
+        font-size: 12px;
+        line-height: 15px;
     }
 }
 
