@@ -108,7 +108,7 @@
         flex-wrap: wrap;
         padding-top: 24px;
         padding-bottom: 0;
-        gap: 7px;
+        gap: 10px;
     }
 }
 
@@ -123,6 +123,6 @@
     .techs__item {
         font-size: 12px;
         line-height: 15px;
-        padding: 20px auto 22px;
+        padding: 20px 0 22px;
     }
 }

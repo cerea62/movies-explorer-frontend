@@ -1,7 +1,7 @@
 .search {
     display: flex;
     justify-content: center;
-    padding: 49px 0 64px;
+    padding: 60px 0 64px;
 }
 
 .search-container {
@@ -19,7 +19,7 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #E8E8E8;
-    padding: 0 6px;
+    padding-left: 8px;
 }
 
 .search__field {
@@ -73,13 +73,9 @@
         padding-right: 0;
     }
 
-    .seach__icon {
-        left: 8px;
-    }
-
     .search__field {
         padding-bottom: 12px;
-        padding-left: 42px;
+        padding-left: 0px;
     }
 }
 
