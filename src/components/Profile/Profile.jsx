@@ -43,42 +43,46 @@ export default function Profile() {
                 <h1 className='profile__title'>Привет, Виталий!</h1>
                 <form className='profile__form form' onSubmit={handleSubmit} noValidate>
                     <div className='profile__form-container'>
-                        <div className='profile__form-item'>
-                            <label className='profile__input-label' htmlFor="name">Имя</label>
-                            <input className='profile__input'
-                                name="name"
-                                id='name'
-                                type="text"
-                                placeholder="Имя"
-                                value={values.name || ''}
-                                minLength='2'
-                                maxLength='30'
-                                required
-                                title='Разрешено использовать латиницу, кириллицу, пробел или дефис'
-                                pattern='^[A-Za-zА-Яа-яЁё /s -]+$'
-                                onChange={handleNameChange}
-                                disabled={inputState}
-                            />
+                        <fieldset className='profile__form-field'>
+                            <div className='profile__input-item'>
+                                <label className='profile__input-label' htmlFor="name">Имя</label>
+                                <input className='profile__input'
+                                    name="name"
+                                    id='name'
+                                    type="text"
+                                    placeholder="Имя"
+                                    value={values.name || ''}
+                                    minLength='2'
+                                    maxLength='30'
+                                    required
+                                    title='Разрешено использовать латиницу, кириллицу, пробел или дефис'
+                                    pattern='^[A-Za-zА-Яа-яЁё /s -]+$'
+                                    onChange={handleNameChange}
+                                    disabled={inputState}
+                                />
+                            </div>
                             <span id='name-error' className='profile__input-error'>
                                 {!isValid ? errors.name : ''}
                             </span>
-                        </div>
-                        <div className='profile__form-item'>
-                            <label className='profile__input-label' htmlFor="email">E-mail</label>
-                            <input className='profile__input'
-                                name="email"
-                                id='email'
-                                type='email'
-                                minLength='2'
-                                maxLength='30'
-                                required
-                                placeholder='E-mail'
-                                value={values.email || ''}
-                                onChange={handleEmailChange}
-                                disabled={inputState}
-                            />
+                        </fieldset>
+                        <fieldset className='profile__form-field'>
+                            <div className='profile__input-item'>
+                                <label className='profile__input-label' htmlFor="email">E-mail</label>
+                                <input className='profile__input'
+                                    name="email"
+                                    id='email'
+                                    type='email'
+                                    minLength='2'
+                                    maxLength='30'
+                                    required
+                                    placeholder='E-mail'
+                                    value={values.email || ''}
+                                    onChange={handleEmailChange}
+                                    disabled={inputState}
+                                />
+                            </div>
                             <span className='profile__input-error'>{!isValid ? errors.email : ''}</span>
-                        </div>
+                        </fieldset>
                     </div>
                     {editButtonEnable ? (
                         <div className='profile__submit'>

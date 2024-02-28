@@ -24,8 +24,10 @@ export default function MovieCard({ movie, title, duration, link }) {
         <>
             <div className='movie'>
                 <div className='movie__caption'>
+                    <div>
                     <h1 className='movie__title'>{title}</h1>
                     <p className='movie__duraction'>{duration}</p>
+                    </div>
                     {path === '/movies' ?
                         <button className={movieLikeButtonClassName}
                             type='button'

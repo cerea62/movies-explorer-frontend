@@ -7,22 +7,27 @@
     border-radius: 8px;
     border: none;
     background-color: #F9F9F9;
-    padding: 15px 0 15px 15px;
+    padding: 16px 0 15px 15px;
     max-width: 381px;
 }
 
 input_type_color {
     color: #EE3465;
 }
-
+.input__fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+    height: 88px;
+}
 .input__label {
     font-size: 10px;
     color: #A0A0A0;
     width: 100%;
-    margin: 0 0 10px;
+    margin: 0 0 11px;
     display: inline-block;
     box-sizing: border-box;
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -33,8 +38,6 @@ input_type_color {
 }
 
 .input__error {
-    position: absolute;
-    top: 70px;
     font-size: 10px;
     line-height: 12px;
     color: #EE3465;

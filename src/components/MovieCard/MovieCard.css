@@ -10,6 +10,8 @@
 
 .movie__caption {
     margin: 14px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .movie__title {
@@ -36,9 +38,7 @@
     margin: 0;
 }
 .movie__button {
-    position: absolute;
-    top: 19px;
-    right: 14px;
+    margin-top: 5px;
     border: none;
     background-color: transparent;
     height: 30px;

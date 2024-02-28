@@ -16,7 +16,7 @@
 }
 
 .submit__button_type_login {
-    margin-top: 179px;
+    margin-top: 160px;
 }
 
 .submit__button_type_register {
@@ -24,7 +24,8 @@
 }
 
 .submit__button_type_profile {
-    margin-bottom: 54px;
+    margin-top: 220px;
+    margin-bottom: 60px;
 }
 
 .submit__button:disabled {

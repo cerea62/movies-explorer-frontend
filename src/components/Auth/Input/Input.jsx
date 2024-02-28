@@ -7,6 +7,7 @@ export default function Input({inputName, inputType, inputLabel, inputPlaceholde
     return (
 
         <>
+        <fieldset className='input__fieldset'>
         <label className='input__label' htmlFor={inputName}>{inputLabel}
                 <input
                     className={`input ${{error} && "input_type_color"}`}
@@ -22,7 +23,9 @@ export default function Input({inputName, inputType, inputLabel, inputPlaceholde
                     maxLength={maxLength}
                 />
                 <span className='input__error'>{error ? errorMesage : ''}</span>
+                
                 </label>
+                </fieldset>
         </>
     )
 }
