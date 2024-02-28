@@ -10,9 +10,11 @@
     padding: 15px 0 15px 15px;
     max-width: 381px;
 }
+
 input_type_color {
     color: #EE3465;
 }
+
 .input__label {
     font-size: 10px;
     color: #A0A0A0;
@@ -38,8 +40,13 @@ input_type_color {
     color: #EE3465;
     background-color: #fff;
 }
+
 @media screen and (max-width: 500px) {
     .input {
         width: 245px;
+    }
+
+    .input__label:not(:first-child) {
+        margin-top: 22px;
     }
 }

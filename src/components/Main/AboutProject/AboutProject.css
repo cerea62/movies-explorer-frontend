@@ -9,13 +9,13 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 91px 70px 110px;
+    padding: 92px 54px 110px 70px;
 }
 
 .about-project__content {
     display: flex;
     margin-top: 51px;
-    gap: 53px;
+    gap: 55px;
 
 }
 

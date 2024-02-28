@@ -10,7 +10,7 @@
     justify-content: space-between;
     max-width: 1140px;
     width: 100%;
-    padding: 52px 70px 76px;
+    padding: 60px 54px 76px 70px;
 }
 
 .promo__left {
@@ -26,8 +26,11 @@
 }
 
 .promo__text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 50px;
-    line-height: 57px;
+    line-height: 58px;
     color: #FFFFFF;
     max-width: 650px;
     width: 100%;
@@ -36,6 +39,9 @@
 }
 
 .promo__caption {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 13px;
     line-height: 16px;
     color: #FFFFFF;
@@ -46,12 +52,15 @@
 }
 
 .promo__nav {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 12px;
     line-height: 16px;
     align-items: center;
     color: #FFFFFF;
     border: 1px solid #FFFFFF;
-    padding: 10px 20px;
+    padding: 9px 20px;
     width: 89px;
     height: 16px;
     text-decoration: none;
@@ -99,13 +108,13 @@
 
     .promo__nav {
         align-self: center;
-        margin-top: 88px;
+        margin-top: 92px;
     }
 }
 
 @media screen and (max-width: 600px) {
     .promo__container {
-        padding: 52px 14px 28px;
+        padding: 52px 15px 30px;
     }
 
     .promo__logo {

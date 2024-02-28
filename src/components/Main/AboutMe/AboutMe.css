@@ -9,7 +9,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 93px 70px 0;
+    padding: 93px 54px 0 70px;
 }
 
 .about-me__content {

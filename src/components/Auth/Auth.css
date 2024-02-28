@@ -39,7 +39,7 @@
     }
 
     .auth__title {
-        margin-top: 50px;
+        margin-top: 48px;
     }
 
     .auth__form {
@@ -50,12 +50,6 @@
         margin-top: 25px;
         flex-grow: 1;
     }
-
-    .auth__submit {
-        margin: 0;
-        width: 260px;
-    }
-
     .auth__text {
         font-size: 12px;
         margin: 14px auto 30px;
@@ -64,10 +58,11 @@
 }
 
 @media screen and (max-width: 500px) {
+
     .auth {
         max-width: 260px;
     }
     .auth__form {
-        margin-top: 36px;
+        margin-top: 40px;
     }
 }

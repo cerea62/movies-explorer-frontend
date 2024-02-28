@@ -20,7 +20,7 @@ export default function NavBar() {
         const menu = menuRef.current;
         menu.style.display = "";
     };
-    console.log(path)
+  
     return (
         <>
             {IsLogged ? (
