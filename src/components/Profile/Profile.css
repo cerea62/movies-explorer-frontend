@@ -24,7 +24,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-grow: 1;
 }
 
@@ -96,7 +96,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 16px;
-    margin-bottom: 54px;
+    margin-top: 220px;
 }
 
 .profile__submit_invisible {
@@ -162,7 +162,7 @@
         padding-top: 40px;
         margin-top: 25px;
         flex-grow: 1;
-
+        justify-content: space-between;
     }
 
     .profile__form-field:first-child {
@@ -170,6 +170,7 @@
     }
 
     .profile__submit {
+
         margin-bottom: 25px;
     }
 
