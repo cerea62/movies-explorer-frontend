@@ -1,0 +1,160 @@
+.about-project {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-project__container {
+    max-width: 1140px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 92px 54px 110px 70px;
+}
+
+.about-project__content {
+    display: flex;
+    margin-top: 51px;
+    gap: 55px;
+
+}
+
+.about-project__subtitle {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    margin: 0;
+}
+
+.about-project__text {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 26px;
+    margin-bottom: 0;
+}
+
+.about-project__time-frame {
+    display: flex;
+}
+
+.about-project__duration {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+    margin-top: 110px;
+}
+
+.about-project__duration-back {
+    width: 20%;
+}
+
+.about-project__duration-front {
+    width: 80%;
+}
+
+.about-project__period {
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #F2F2F2;
+    padding: 9px;
+    margin: 0;
+
+}
+
+.about-project__period_theme_color {
+    background-color: #2BE080;
+}
+
+.about-project__type {
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+    margin: 0;
+}
+
+@media screen and (max-width:900px) {
+    .about-project__container {
+        padding: 72px 50px 90px;
+    }
+
+    .about-project__content {
+        gap: 37px;
+    }
+
+    .about-project__text {
+        font-size: 12px;
+        margin-top: 21px;
+        line-height: 19px;
+    }
+
+    .about-project__duration {
+        margin-top: 93px;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .about-project__container {
+        padding: 55px 18px 110px;
+    }
+
+    .about-project__content {
+        flex-direction: column;
+        margin-top: 48px;
+        gap: 58px;
+    }
+
+    .about-project__subtitle {
+        line-height: 18px;
+        line-height: 22px;
+        letter-spacing: -0.04em;
+    }
+
+    .about-project__text {
+        font-size: 11px;
+        margin-top: 10px;
+    }
+
+    .about-project__duration {
+        margin-top: 55px;
+    }
+
+    .about-project__time-frame {
+        max-width: 100%;
+    }
+
+    .about-project__duration-back {
+        width: 100px;
+    }
+
+    .about-project__period {
+        font-size: 11px;
+    }
+
+    .about-project__type {
+        font-size: 11px;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+    .about-project__container {
+        padding: 54px 18px 110px;
+    }
+
+    .about-project__subtitle {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.04em;
+        margin: 0;
+    }
+
+    .about-project__text {
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 14px;
+    }
+    .about-project__duration {
+        margin-top: 60px;
+    }
+}
