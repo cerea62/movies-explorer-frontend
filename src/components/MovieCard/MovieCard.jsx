@@ -1,9 +1,14 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './MovieCard.css';
+import { moviesApiAddress } from '../../utils/constants';
 // import link from '../../image/movie.jpg'
 
-export default function MovieCard({ movie, title, duration, link }) {
+export default function MovieCard({ movie}) {
+    const imageUrl = movie.image.url;
+    const hours = Math.floor(movie.duration / 60);
+    const minutes = movie.duration % 60;
+    const movieTrailer = movie.trailerLink;
     const location = useLocation();
     const path = location.pathname;
     const isLiked = false; //временная заглушка
@@ -25,8 +30,8 @@ export default function MovieCard({ movie, title, duration, link }) {
             <div className='movie'>
                 <div className='movie__caption'>
                     <div>
-                    <h1 className='movie__title'>{title}</h1>
-                    <p className='movie__duraction'>{duration}</p>
+                        <h1 className='movie__title'>{movie.nameRU}</h1>
+                        <p className='movie__duraction'>{hours}ч. {minutes} мин.</p>
                     </div>
                     {path === '/movies' ?
                         <button className={movieLikeButtonClassName}
@@ -44,7 +49,9 @@ export default function MovieCard({ movie, title, duration, link }) {
                         />}
 
                 </div>
-                <img className="movie__image" src={link} alt='Изображение-постер' />
+                <a className='movie__trailer' href={movieTrailer}  target="_blank" rel="noopener noreferrer">
+                <img className="movie__image" src={`${moviesApiAddress}${imageUrl}`} alt={movie.nameRu} />
+                </a>
             </div>
         </>
     )

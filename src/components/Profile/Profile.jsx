@@ -21,7 +21,6 @@ export default function Profile() {
 
     }
     function handleSubmit(e) {
-        console.log(e);
         e.preventDefault();
         setEditButtonEnable(true);
     }

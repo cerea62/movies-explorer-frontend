@@ -55,16 +55,32 @@
 .movie__button_type_delete {
     background-image: url(../../image/delete-icon.svg);
 }
+.movie__trailer {
+    width: 100%;
+    height: 203px;
+}
+.movie__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
 @media screen and (max-width: 900px) {
     .movie {
         height: 258px;
         width: 339px;
     }
+    .movie__trailer {
+        height: 190px;
+    }
 }
 @media screen and (max-width: 600px) {
     .movie {
         height: 236px;
         width: 300px;
+    }
+    .movie__trailer {
+        height: 168px;
     }
 }

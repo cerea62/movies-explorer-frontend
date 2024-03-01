@@ -1,5 +1,7 @@
 import './App.css';
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import api from '../../utils/MoviesApi'
 import Header from '../Header/Header';
 import Login from '../Auth/Login'
 import Register from '../Auth/Register';
@@ -12,8 +14,19 @@ import Footer from '../Footer/Footer';
 
 
 function App() {
+  const [movies, setMovies] = useState([]);
   const location = useLocation();
   const path = location.pathname;
+
+  useEffect(() => {
+    api.getMovies()
+      .then((movieData) => {
+        setMovies(movieData);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [])
   return (
     <div className="page">
       {path === '/' || path === '/movies' || path === '/saved-movies' || path === '/profile' ?
@@ -26,7 +39,8 @@ function App() {
         />
         <Route exact path="/" element={<Main />}
         />
-        <Route path="/movies" element={<Movies />}
+        <Route path="/movies" element={<Movies
+          movies={movies} />}
         />
         <Route path="/saved-movies" element={<SavedMovies />}
         />
@@ -37,7 +51,7 @@ function App() {
       </Routes>
       {path === '/' || path === '/movies' || path === '/saved-movies' ?
         <Footer
-        id='footer' /> : ''
+          id='footer' /> : ''
       }
     </div >
   );

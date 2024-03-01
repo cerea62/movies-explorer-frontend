@@ -140,3 +140,5 @@ export const movies = [{
 },
 
 ]
+
+export const moviesApiAddress = 'https://api.nomoreparties.co';
