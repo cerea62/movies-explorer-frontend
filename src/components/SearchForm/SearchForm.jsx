@@ -10,7 +10,7 @@ export default function SearchForm({handleSearch}) {
 //   const [placeholderContent, setPlaceholderContent] = useState('Название'); // текст плейсхолдера после запроса нужно менять
   const [inputValue, setInputValue] = useState('');
 //   const [error, setError] = useState(false); // состояние ошибок инпутов
-  const { pathname } = useLocation();
+  const { path } = useLocation();
 
   const handleChange = (evt) => {
     setInputValue(evt.target.value);
@@ -20,7 +20,7 @@ export default function SearchForm({handleSearch}) {
   const onChangeFilter = () => {
     setShorts(!shorts);
     handleSearch(inputValue, !shorts);
-    if (pathname === '/movies') {
+    if (path === '/movies') {
       localStorage.setItem('shorts', !shorts);
     }
   };
@@ -34,7 +34,7 @@ export default function SearchForm({handleSearch}) {
     }
     // setError(false);
     // setPlaceholderContent('Movie');
-    if (pathname === '/movies') {
+    if (path === '/movies') {
       localStorage.setItem('query', inputValue);
     }
     handleSearch(inputValue, shorts);
@@ -43,7 +43,7 @@ export default function SearchForm({handleSearch}) {
   // при перезагрузке страницы проверим есть ли запрос уже в localStorage
   // если есть - вставим в поиск и выведем
   useEffect(() => {
-    if (pathname === '/movies') {
+    if (path === '/movies') {
       const savedInputValue = localStorage.getItem('query');
       const savedShorts = JSON.parse(localStorage.getItem('shorts'));
       if (savedInputValue) {

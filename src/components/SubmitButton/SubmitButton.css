@@ -1,5 +1,8 @@
 .submit {
     position: relative;
+    border: none;
+    padding: 0;
+    text-align: center;
 }
 
 .submit__button {
@@ -15,15 +18,15 @@
     font-weight: 500;
 }
 
-.submit__button_type_login {
+.submit_type_login {
     margin-top: 160px;
 }
 
-.submit__button_type_register {
+.submit_type_register {
     margin-top: 70px;
 }
 
-.submit__button_type_profile {
+.submit_type_profile {
     margin-top: 220px;
     margin-bottom: 60px;
 }
@@ -47,20 +50,15 @@
 }
 
 .submit__error {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
     font-size: 11px;
     line-height: 13px;
-    text-align: center;
     color: #EE3465;
-    position: absolute;
-    top: 145px;
-    right: 0;
-    left: 0;
-    display: none;
+    margin-bottom: 20px;
 }
 
-.submit__error_visuble {
-    display: block;
-}
 @media screen and (max-width: 800px) {
     .submit__button_type_profile {
         margin-bottom: 308px;
@@ -70,12 +68,14 @@
         margin-top: 71px;
     }
 }
+
 @media screen and (max-width: 700px) {
-    
+
     .submit {
         margin-top: 30px;
         padding: 0;
     }
+
     .submit__button {
         margin: 0;
         width: 100%;

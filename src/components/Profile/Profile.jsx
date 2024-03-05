@@ -1,45 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useContext } from 'react'
 import './Profile.css'
 import { Link } from 'react-router-dom'
 import SubmitButton from '../SubmitButton/SubmitButton'
 import useFormValidation from '../../utils/useFormValidation'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import mainApi from '../../utils/MainApi'
 
-
-
-export default function Profile() {
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+export default function Profile({ onSignOut }) {
+    const currentUser = useContext(CurrentUserContext);
+    const [name, setName] = useState(currentUser.name);
+    const [email, setEmail] = useState(currentUser.email);
     const [editButtonEnable, setEditButtonEnable] = useState(true);
-    const [saveButtonState, setSaveButtonState] = useState(true);
+    // const [saveButtonState, setSaveButtonState] = useState(true);
     const [inputState, setInputState] = useState(true);
     const { values, errors, isValid, handleChange } = useFormValidation();
+    console.log(inputState)
+
+    useEffect(() => {
+        setName(currentUser.name);
+        setEmail(currentUser.email);
+    }, [currentUser.name, currentUser.email]);
 
     function handleEditClick(e) {
         setEditButtonEnable(false);
         setInputState(false);
 
     }
+
+    function handleUpdateUser(data) {
+        mainApi.editUserInfo(data)
+            .then((profileData) => {
+                setName(profileData.name);
+                setEmail(profileData.email);
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
+        
+        handleUpdateUser({ name, email })
         setEditButtonEnable(true);
     }
     function handleEmailChange(e) {
         handleChange(e);
         // setSaveButtonState(false);
-        // const value = e.target.value;
-        // setEmail(value);
+         setEmail(e.target.value);
     }
     function handleNameChange(e) {
         handleChange(e);
+        setName(e.target.value);
         // setSaveButtonState(!isValid);
-        // const value = e.target.value;
-        // setName(value);
     }
     return (
         <>
             <section className='profile'>
-                <h1 className='profile__title'>Привет, Виталий!</h1>
+                <h1 className='profile__title'>Привет, {currentUser.name}!</h1>
                 <form className='profile__form form' onSubmit={handleSubmit} noValidate>
                     <div className='profile__form-container'>
                         <fieldset className='profile__form-field'>
@@ -50,7 +70,7 @@ export default function Profile() {
                                     id='name'
                                     type="text"
                                     placeholder="Имя"
-                                    value={values.name || ''}
+                                    value={name}
                                     minLength='2'
                                     maxLength='30'
                                     required
@@ -75,7 +95,7 @@ export default function Profile() {
                                     maxLength='30'
                                     required
                                     placeholder='E-mail'
-                                    value={values.email || ''}
+                                    value={email}
                                     onChange={handleEmailChange}
                                     disabled={inputState}
                                 />
@@ -86,7 +106,7 @@ export default function Profile() {
                     {editButtonEnable ? (
                         <div className='profile__submit'>
                             <button className='profile__submit-button button' onClick={handleEditClick}>Редактировать</button>
-                            <Link className='profile__signout link' to={'/signin'}>Выйти из аккаунта</Link>
+                            <Link className='profile__signout link' to={'/signin'} onClick={onSignOut}>Выйти из аккаунта</Link>
                         </div>
                     ) :
                         (

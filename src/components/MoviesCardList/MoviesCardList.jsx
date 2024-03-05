@@ -9,7 +9,7 @@ import MovieCard from '../MovieCard/MovieCard'
 
 
 
-export default function MoviesCardList({ onLikeClick, movies }) {
+export default function MoviesCardList({ handleLikeMovie, movies }) {
 
     // const link = 'https://api.nomoreparties.co' + movies.image.url
     const { path } = useLocation();
@@ -56,6 +56,7 @@ export default function MoviesCardList({ onLikeClick, movies }) {
                             <li key={movie.id} className="movie">
                                 <MovieCard
                                     movie={movie}
+                                    handleLikeMovie={handleLikeMovie}
                                 />
                             </li>
                         ), 12)}
@@ -69,10 +70,7 @@ export default function MoviesCardList({ onLikeClick, movies }) {
                                     <li key={movie.id} className="movie">
                                         <MovieCard
                                             movie={movie}
-                                            // title={movie.title}
-                                            // link={'https://api.nomoreparties.co' + movie.image.url}
-                                            // duration={movie.duration}
-                                            // onLikeClick={onLikeClick}
+                                            handleLikeMovie={handleLikeMovie}
                                         />
                                     </li>
                                 ))}
