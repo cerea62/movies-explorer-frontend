@@ -8,11 +8,13 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import searchFilter from '../../utils/Filter';
 import Preloader from '../Preloader/Preloader';
 import Modal from '../Modal/Modal';
+import { NOT_FOUND_MESSAGE } from '../../utils/constants';
+import { MOVVIES_MESSAGE } from '../../utils/constants';
 
 export default function Movies({ }) {
   const [movies, setMovies] = useState([]);
+  const [savedMoviesList, setSavedMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false); // состояние загрузки фильмов из базы
-  const [error, setError] = useState('');
   const [statusInfo, setStatusInfo] = useState('');
   const [infoTitle, setInfoTitle] = useState(''); // ошибка запроса
   const [openModal, setOpenModal] = useState('');
@@ -20,23 +22,28 @@ export default function Movies({ }) {
   function handlecloseModal() {
     setOpenModal(false);
   }
+
   const getSavedMovies = () => {
     const savedMoviesCache = localStorage.getItem('savedMovies');
     if (!savedMoviesCache) {
-      setIsLoading(true);
+      // setIsLoading(true);
       mainApi
         .getUserMovies()
-        .then((data) => {
-          if (data.length > 0) {
-            localStorage.setItem('savedMovies', JSON.stringify(data));
+        .then((movies) => {
+          if (movies.length > 0) {
+            localStorage.setItem('savedMovies', JSON.stringify(movies));
           }
-          setIsLoading(false);
+          // setIsLoading(false);
+          console.log(movies);
+          setSavedMovies(movies);
         })
         .catch(() => {
-          // setStatusInfo(true);
-          // setOpenModal(true);
-          // setInfoTitle("Что-то пошло не так! Попробуйте еще раз.")
+          setStatusInfo(true);
+          setOpenModal(false);
+          setInfoTitle(MOVVIES_MESSAGE);
         });
+    } else {
+      setSavedMovies(savedMoviesCache);
     }
   }
 
@@ -54,11 +61,10 @@ export default function Movies({ }) {
     if (filtered.length === 0) {
       setOpenModal(true);
       setStatusInfo(false);
-      setInfoTitle('Ничего не найдено!')
-      // setError(NOT_FOUND_MESSAGE);
+      setInfoTitle(NOT_FOUND_MESSAGE)
     }
 
-    // Проставляем признак isLiked для уже отфильтованных данныъ
+    // Проставляем признак isLiked для уже отфильтованных данныx
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     filtered.forEach((movie) => {
       if (savedMovies) {
@@ -72,7 +78,6 @@ export default function Movies({ }) {
         movie.isLiked = false;
       }
     });
-
     setMovies(filtered);
     setIsLoading(false);
   };
@@ -92,10 +97,13 @@ export default function Movies({ }) {
       nameEN: movie.nameEN,
     };
 
-    if (movie.isLiked) {
+    if (movie.isLiked || !(movie._id === undefined)) {
       mainApi
         .deleteMovie(movie._id)
-        .then(() => { })
+        .then(() => {
+          localStorage.removeItem('savedMovies');
+          getSavedMovies();
+        })
         .catch(() => {
           console.log("Error delete liked move", movie);
         });
@@ -107,6 +115,8 @@ export default function Movies({ }) {
           console.log("Error save liked move", movie);
         });
     }
+    localStorage.removeItem('savedMovies');
+    getSavedMovies();
   }
 
 
@@ -126,7 +136,9 @@ export default function Movies({ }) {
           filter(query, shorts);
         })
         .catch(() => {
-          // setError(MOVVIES_MESSAGE);
+          setStatusInfo(true);
+          setOpenModal(false);
+          setInfoTitle(MOVVIES_MESSAGE);
         });
     } else {
       filter(query, shorts);
@@ -134,6 +146,8 @@ export default function Movies({ }) {
 
 
   };
+
+  console.log("savedMoviesList ", savedMoviesList);
   return (
     <>
       <main className='movies'>
@@ -144,6 +158,7 @@ export default function Movies({ }) {
           :
           <MoviesCardList
             movies={movies}
+            savedMoviesList={savedMoviesList}
             handleLikeMovie={handleLikeMovie} />
         }
         <Modal

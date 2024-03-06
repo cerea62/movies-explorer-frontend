@@ -37,6 +37,7 @@ function App() {
       mainApi.checkToken(jwt).then((res) => {
         if (res) {
           setIsLogin(true);
+          getUserInfo();
         }
       }).catch((err) => {
         console.error(err);
@@ -63,19 +64,12 @@ function App() {
       .then((res) => {
         handleLogin(email, password);
         console.log(res);
-        // setName(res.data.name);
-        // setEmail(res.data.email);
-        // setOpenModal(true);
-        // setStatusInfo(true);
-        // setInfoTitle("Вы успешно зарегистрировались!");
         navigate("/movies")
         return true;
       })
       .catch(err => {
         const error = errors(err);
         setErrorText(error);
-        // setOpenModal(false);
-        // setInfoTitle("Что-то пошло не так! Попробуйте еще раз.")
         return false;
       })
   }
@@ -150,8 +144,8 @@ function App() {
                 <Movies
                   isLogin={isLogin}
                   movies={movies}
-                  // isOpen={openModal}
-                  // onClose={handlecloseModal}
+                // isOpen={openModal}
+                // onClose={handlecloseModal}
                 />
               </ProtectedRouteElement>
             }
@@ -160,7 +154,7 @@ function App() {
             element={
               <ProtectedRouteElement
                 isLogin={isLogin}>
-                <SavedMovies
+                <Movies
                   isLogin={isLogin}
                   movies={movies} />
               </ProtectedRouteElement>

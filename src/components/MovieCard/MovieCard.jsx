@@ -1,18 +1,15 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './MovieCard.css';
-import { moviesApiAddress } from '../../utils/constants';
-// import link from '../../image/movie.jpg'
+import { MOVIES_API_ADDRESS } from '../../utils/constants';
 
-export default function MovieCard({ movie, handleLikeMovie}) {
+export default function MovieCard({ movie, handleLikeMovie }) {
     const imageUrl = movie.image.url;
     const hours = Math.floor(movie.duration / 60);
     const minutes = movie.duration % 60;
     const movieTrailer = movie.trailerLink;
     const location = useLocation();
     const path = location.pathname;
-    // const isLiked = false; //временная заглушка
-
     const movieLikeButtonClassName = (
         `button movie__button movie__like ${movie.isLiked ? 'movie__like_active' : ''}`);
 
@@ -30,7 +27,7 @@ export default function MovieCard({ movie, handleLikeMovie}) {
 
         handleLikeMovie(movie);
         handleLikeClick(e);
-    } 
+    }
 
     return (
         <>
@@ -56,8 +53,10 @@ export default function MovieCard({ movie, handleLikeMovie}) {
                         />}
 
                 </div>
-                <a className='movie__trailer' href={movieTrailer}  target="_blank" rel="noopener noreferrer">
-                <img className="movie__image" src={`${moviesApiAddress}${imageUrl}`} alt={movie.nameRu} />
+                <a className='movie__trailer' href={movieTrailer} target="_blank" rel="noopener noreferrer">
+                    <img className="movie__image" src={path === '/movies' ?
+                        (`${MOVIES_API_ADDRESS}${imageUrl}`) : (movie.image)
+                    } alt={movie.nameRu} />
                 </a>
             </div>
         </>

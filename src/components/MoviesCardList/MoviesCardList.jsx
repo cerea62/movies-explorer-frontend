@@ -9,10 +9,11 @@ import MovieCard from '../MovieCard/MovieCard'
 
 
 
-export default function MoviesCardList({ handleLikeMovie, movies }) {
+export default function MoviesCardList({ handleLikeMovie, movies, savedMoviesList }) {
 
     // const link = 'https://api.nomoreparties.co' + movies.image.url
-    const { path } = useLocation();
+    const {pathname} = useLocation();
+
     const [countMovies, setCountMovies] = useState(0);
     function shownCount() {
         const display = window.innerWidth
@@ -46,14 +47,14 @@ export default function MoviesCardList({ handleLikeMovie, movies }) {
             setCountMovies(countMovies + 2)
         }
     }
-
+    console.log("savedMovies", savedMoviesList);
     return (
         <>
             <section className='movies-container'>
-                {path === '/saved-movies' ? (
+                {pathname === '/saved-movies' ? (
                     <ul className="movies-container__items">
-                        {movies.map(movie => (
-                            <li key={movie.id} className="movie">
+                        {savedMoviesList.map(movie => (
+                            <li key={movie.movieId} className="movie">
                                 <MovieCard
                                     movie={movie}
                                     handleLikeMovie={handleLikeMovie}
