@@ -80,7 +80,9 @@
 .profile__input:disabled {
     background-color: #fff;
 }
-
+.profile__input:focus {
+    outline: none;
+}
 .profile__input-error {
     font-size: 11px;
     line-height: 13px;

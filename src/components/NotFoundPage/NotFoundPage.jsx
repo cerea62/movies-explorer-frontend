@@ -2,10 +2,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './NotFoundPage.css'
 export default function NotFoundPage() {
+
     const navigate = useNavigate();
     function handleClick() {
         navigate(-1);
     }
+    
     return (
         <>
             <div className='error'>

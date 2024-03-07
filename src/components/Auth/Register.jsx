@@ -1,43 +1,36 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import Auth from './Auth'
 import Input from './Input/Input'
 import SubmitButton from '../SubmitButton/SubmitButton';
 import useFormValidation from '../../utils/useFormValidation'
 
-export default function Register({ onRegister, onLogin, isLogin, errorText }) {
+export default function Register({ onRegister, errorText }) {
     const { values, errors, isValid, handleChange } = useFormValidation();
     const [name, setName] = useState();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [isRegistred, setIsRegistered] = useState(false)
-    const navigate = useNavigate();
 
     function onNameChange(e) {
         handleChange(e);
         setName(e.target.value)
     }
+
     function onEmailChange(e) {
         handleChange(e);
         setEmail(e.target.value)
     }
+
     function onPasswordChange(e) {
         handleChange(e);
         setPassword(e.target.value)
     }
-    // function onLogin(isRegistred);
+
     function handleSubmit(e) {
         e.preventDefault();
         onRegister(name, email, password);
-        // setIsRegistered(isRegistred);
-          
     }
-    // useEffect(() => {
-    //   if (isLogin) {
-    //     navigate('/');
-    //   }
-    // }, [isLogin, navigate]);
+
     return (
         <>
             <Auth

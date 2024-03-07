@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import moviesApi from '../../utils/MoviesApi'
 import mainApi from '../../utils/MainApi';
 import './Movies.css'
@@ -11,74 +11,77 @@ import Modal from '../Modal/Modal';
 import { NOT_FOUND_MESSAGE } from '../../utils/constants';
 import { MOVVIES_MESSAGE } from '../../utils/constants';
 
-export default function Movies({ }) {
+export default function Movies() {
   const [movies, setMovies] = useState([]);
-  const [savedMoviesList, setSavedMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // состояние загрузки фильмов из базы
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [statusInfo, setStatusInfo] = useState('');
-  const [infoTitle, setInfoTitle] = useState(''); // ошибка запроса
+  const [infoTitle, setInfoTitle] = useState('');
   const [openModal, setOpenModal] = useState('');
+
+  useEffect(() => {
+    getAllMovies();
+  }, []);
 
   function handlecloseModal() {
     setOpenModal(false);
   }
 
-  const getSavedMovies = () => {
-    const savedMoviesCache = localStorage.getItem('savedMovies');
-    if (!savedMoviesCache) {
-      // setIsLoading(true);
-      mainApi
-        .getUserMovies()
-        .then((movies) => {
-          if (movies.length > 0) {
-            localStorage.setItem('savedMovies', JSON.stringify(movies));
-          }
-          // setIsLoading(false);
-          console.log(movies);
-          setSavedMovies(movies);
-        })
-        .catch(() => {
+  const getAllMovies = () => {
+    const movies = JSON.parse(localStorage.getItem("movies") || "[]");
+    const savedMovies = JSON.parse(localStorage.getItem("savedMovies") || "[]");
+    if (movies.length === 0 || savedMovies.length === 0) {
+      setIsLoading(true);
+      Promise.all([moviesApi.getMovies(), mainApi.getUserMovies()]).then(
+        ([movies, savedMovies]) => {
+          movies.forEach((movie) => {
+            if (savedMovies) {
+              const isSelected = savedMovies.filter((item) =>
+                item.movieId === movie.id);
+              movie.isLiked = isSelected.length > 0;
+              if (isSelected.length > 0) {
+                movie._id = isSelected[0]._id;
+              }
+            } else {
+              movie.isLiked = false;
+            }
+          });
+          localStorage.setItem('movies', JSON.stringify(movies));
+          localStorage.setItem("savedMovies", JSON.stringify(movies.filter((movie) => movie.isLiked)));
+          setSavedMovies(JSON.parse(
+            localStorage.getItem("savedMovies") || "[]"
+          ));
+          setIsLoading(false);
+        }).catch((err) => {
           setStatusInfo(true);
           setOpenModal(false);
           setInfoTitle(MOVVIES_MESSAGE);
         });
-    } else {
-      setSavedMovies(savedMoviesCache);
     }
   }
 
-  //при открытии главной страницы с фильмами загрузили все сохраненки в хранилище key = savedMovies
-  useEffect(() => {
-    localStorage.removeItem('movies');
-    localStorage.removeItem('savedMovies');
-    getSavedMovies();
-  }, []);
-
-  // фильтр по ключевому слову query
-  const filter = (query, shorts) => {
-    const movies = JSON.parse(localStorage.getItem('movies'));
-    const filtered = searchFilter(movies, query, shorts);
-    if (filtered.length === 0) {
-      setOpenModal(true);
-      setStatusInfo(false);
-      setInfoTitle(NOT_FOUND_MESSAGE)
-    }
-
-    // Проставляем признак isLiked для уже отфильтованных данныx
-    const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
-    filtered.forEach((movie) => {
-      if (savedMovies) {
-        const isSelected = savedMovies.filter((item) =>
-          item.movieId === movie.id);
-        movie.isLiked = isSelected.length > 0;
-        if (isSelected.length > 0) {
-          movie._id = isSelected[0]._id;
-        }
-      } else {
-        movie.isLiked = false;
+  const filter = (query, shorts, path) => {
+    setIsLoading(true);
+    if (path === '/movies') {
+      const movies = JSON.parse(localStorage.getItem('movies'));
+      const filtered = searchFilter(movies, query, shorts);
+      if (filtered.length === 0) {
+        setOpenModal(true);
+        setStatusInfo(false);
+        setInfoTitle(NOT_FOUND_MESSAGE)
       }
-    });
-    setMovies(filtered);
+      setMovies(filtered);
+
+    } else {
+      const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+      const filteredSaved = searchFilter(savedMovies, query, shorts);
+      if (filteredSaved.length === 0) {
+        setOpenModal(true);
+        setStatusInfo(false);
+        setInfoTitle(NOT_FOUND_MESSAGE)
+      }
+      setSavedMovies(filteredSaved);
+    }
     setIsLoading(false);
   };
 
@@ -101,8 +104,8 @@ export default function Movies({ }) {
       mainApi
         .deleteMovie(movie._id)
         .then(() => {
-          localStorage.removeItem('savedMovies');
-          getSavedMovies();
+          // localStorage.removeItem('savedMovies');
+          // getSavedMovies();
         })
         .catch(() => {
           console.log("Error delete liked move", movie);
@@ -115,39 +118,43 @@ export default function Movies({ }) {
           console.log("Error save liked move", movie);
         });
     }
-    localStorage.removeItem('savedMovies');
-    getSavedMovies();
+
+    const filtredMovies = movies.map((filtredMovie) => {
+      if (filtredMovie.id === movie.id) {
+        filtredMovie.isLiked = !filtredMovie.isLiked;
+      }
+      return filtredMovie;
+    });
+
+    const allMovies = JSON.parse(localStorage.getItem('movies'));
+    const localMovies = allMovies.map((localMovie) => {
+      if (localMovie.id === movie.id) {
+        localMovie.isLiked = !localMovie.isLiked;
+      }
+      return localMovie;
+    });
+
+    localStorage.setItem(
+      "movies",
+      JSON.stringify(localMovies)
+    );
+    localStorage.setItem(
+      "savedMovies",
+      JSON.stringify(localMovies.filter((movieitem) => movieitem.isLiked))
+    );
+    setMovies(filtredMovies);
+    setSavedMovies(localMovies.filter((movieitem) => movieitem.isLiked));
+
   }
 
 
   // обработчик кнопки Найти фильм
-  const handleSearch = (query, shorts) => {
+  const handleSearch = (query, shorts, path) => {
     setIsLoading(true);
-    console.log(isLoading);
-    // ищем ВСЕ фильмы в localStorage
-    // если их нет - загружаем с beatfilm
-    const movesCache = JSON.parse(localStorage.getItem('movies'));
-    if (!movesCache) {
-      moviesApi
-        .getMovies()
-        .then((films) => {
-          // сохраняем фильмы
-          localStorage.setItem('movies', JSON.stringify(films));
-          filter(query, shorts);
-        })
-        .catch(() => {
-          setStatusInfo(true);
-          setOpenModal(false);
-          setInfoTitle(MOVVIES_MESSAGE);
-        });
-    } else {
-      filter(query, shorts);
-    }
-
-
+    filter(query, shorts, path);
+    setIsLoading(false);
   };
 
-  console.log("savedMoviesList ", savedMoviesList);
   return (
     <>
       <main className='movies'>
@@ -158,7 +165,8 @@ export default function Movies({ }) {
           :
           <MoviesCardList
             movies={movies}
-            savedMoviesList={savedMoviesList}
+            savedMoviesList={savedMovies}
+            // savedMoviesList={JSON.parse(localStorage.getItem("savedMovies"))}
             handleLikeMovie={handleLikeMovie} />
         }
         <Modal

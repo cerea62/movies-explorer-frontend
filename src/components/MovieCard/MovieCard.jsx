@@ -13,9 +13,10 @@ export default function MovieCard({ movie, handleLikeMovie }) {
     const movieLikeButtonClassName = (
         `button movie__button movie__like ${movie.isLiked ? 'movie__like_active' : ''}`);
 
+console.log(movie);
+
     function handleLikeClick(e) {
         const button = e.target;
-        console.log(e.target);
         if (button.classList.contains("movie__like_active")) {
             button.classList.remove("movie__like_active");
         } else {
@@ -54,9 +55,11 @@ export default function MovieCard({ movie, handleLikeMovie }) {
 
                 </div>
                 <a className='movie__trailer' href={movieTrailer} target="_blank" rel="noopener noreferrer">
-                    <img className="movie__image" src={path === '/movies' ?
-                        (`${MOVIES_API_ADDRESS}${imageUrl}`) : (movie.image)
-                    } alt={movie.nameRu} />
+                    <img className="movie__image" src={(`${MOVIES_API_ADDRESS}${imageUrl}`)}
+                    // {path === '/movies' ?
+                    //     (`${MOVIES_API_ADDRESS}${imageUrl}`) : (movie.image)
+                    // } 
+                    alt={movie.nameRu} />
                 </a>
             </div>
         </>

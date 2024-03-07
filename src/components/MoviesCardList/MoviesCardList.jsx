@@ -5,15 +5,10 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import './MoviesCardList.css'
 import MovieCard from '../MovieCard/MovieCard'
-// import { movies } from '../../utils/constants'
-
-
 
 export default function MoviesCardList({ handleLikeMovie, movies, savedMoviesList }) {
 
-    // const link = 'https://api.nomoreparties.co' + movies.image.url
     const {pathname} = useLocation();
-
     const [countMovies, setCountMovies] = useState(0);
     function shownCount() {
         const display = window.innerWidth
@@ -47,10 +42,10 @@ export default function MoviesCardList({ handleLikeMovie, movies, savedMoviesLis
             setCountMovies(countMovies + 2)
         }
     }
-    console.log("savedMovies", savedMoviesList);
+
     return (
         <>
-            <section className='movies-container'>
+            <section className='movies-container' >
                 {pathname === '/saved-movies' ? (
                     <ul className="movies-container__items">
                         {savedMoviesList.map(movie => (

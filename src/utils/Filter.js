@@ -9,6 +9,8 @@ export default function searchFilter(array, query, short) {
   if (query) {
     searchResult = searchResult.filter((element) => element.nameRU
       .toLowerCase()
+      .includes(query.toLowerCase()) ||  element.nameEN
+      .toLowerCase()
       .includes(query.toLowerCase()));
   }
 
