@@ -1,4 +1,4 @@
-export function errors(err) {
+export function errorsList(err) {
     if (err === 400) {
       return `Ошибка ${err}. Не верно заполнено одно из полей.`;
     } else if (err === 401) {

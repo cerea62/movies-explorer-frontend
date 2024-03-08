@@ -12,5 +12,6 @@ export const SALT = 10;
 export const MAX_SHORTS_DURATION = 40;
 export const NOT_FOUND_MESSAGE = "Ничего не найдено";
 export const MOVVIES_MESSAGE = "Ошибка. Проверьте подключение или попробуйте позже";
+export const ERROR_CONNECT = "Нет связи с сервером. Попробуйте позже";
 
 export const REGEX_EMAIL = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/

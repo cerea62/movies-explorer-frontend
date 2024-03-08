@@ -14,19 +14,9 @@ export default function MovieCard({ movie, handleLikeMovie }) {
     const movieLikeButtonClassName = (
         `button movie__button movie__like ${movie.isLiked ? 'movie__like_active' : ''}`);
 
-    function handleLikeClick(e) {
-        const button = e.target;
-        if (button.classList.contains("movie__like_active")) {
-            button.classList.remove("movie__like_active");
-        } else {
-            button.classList.add("movie__like_active");
-        }
 
-    }
     function likeMovie(e) {
-
         handleLikeMovie(movie, path);
-        handleLikeClick(e);
     }
 
     return (

@@ -8,8 +8,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import searchFilter from '../../utils/Filter';
 import Preloader from '../Preloader/Preloader';
 import Modal from '../Modal/Modal';
-import { NOT_FOUND_MESSAGE } from '../../utils/constants';
-import { MOVVIES_MESSAGE } from '../../utils/constants';
+import { NOT_FOUND_MESSAGE, ERROR_CONNECT, MOVVIES_MESSAGE } from '../../utils/constants';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -58,7 +57,7 @@ export default function Movies() {
           setInfoTitle(MOVVIES_MESSAGE);
         });
     } else {
-      setSavedMovies(JSON.parse(
+        setSavedMovies(JSON.parse(
         localStorage.getItem("savedMovies") || "[]"
       ));
     }
@@ -111,7 +110,9 @@ export default function Movies() {
           changeLocalStorageData(movie, undefined);
         })
         .catch(() => {
-          console.log("Error delete liked move", movie);
+          setOpenModal(true);
+          setStatusInfo(false);
+          setInfoTitle(ERROR_CONNECT)
         });
     } else {
       mainApi
@@ -120,7 +121,9 @@ export default function Movies() {
           changeLocalStorageData(movie, movieResp._id)
         })
         .catch(() => {
-          console.log("Error save liked move", movie);
+          setOpenModal(true);
+          setStatusInfo(false);
+          setInfoTitle(ERROR_CONNECT)
         });
     }
   }
@@ -130,6 +133,9 @@ export default function Movies() {
     const filtredMovies = movies.map((filtredMovie) => {
       if (filtredMovie.id === movie.id) {
         filtredMovie.isLiked = !filtredMovie.isLiked;
+        if (createdId) {
+          filtredMovie._id = createdId;
+        }
       }
       return filtredMovie;
     });
@@ -169,7 +175,8 @@ export default function Movies() {
     <>
       <main className='movies'>
         <SearchForm
-          handleSearch={handleSearch} />
+          handleSearch={handleSearch}
+          setSavedMovies={setSavedMovies} />
         {isLoading ?
           <Preloader />
           :

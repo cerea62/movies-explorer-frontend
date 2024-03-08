@@ -25,11 +25,19 @@ export default function MoviesCardList({ handleLikeMovie, movies, savedMoviesLis
         shownCount()
     }, [])
 
-    useEffect(() => {
+    const resizeAction = () => {
         setTimeout(() => {
-            window.addEventListener("resize", shownCount)
-        }, 500)
-    })
+            shownCount();
+          }, 500);
+    }
+
+    useEffect(() => {
+        shownCount();
+        window.addEventListener('resize', resizeAction)
+    return () => {
+        document.removeEventListener("resize", resizeAction);
+      };  
+}, []);
 
     function showMore() {
         const display = window.innerWidth

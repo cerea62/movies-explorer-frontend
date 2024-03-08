@@ -5,7 +5,7 @@ import './SearchForm.css';
 import searchIcon from '../../image/search-icon.svg';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
 
-export default function SearchForm({ handleSearch }) {
+export default function SearchForm({ handleSearch, setSavedMovies}) {
   const [shorts, setShorts] = useState(false);
   const [placeholderContent, setPlaceholderContent] = useState('Фильм');
   const [inputValue, setInputValue] = useState('');
@@ -18,7 +18,7 @@ export default function SearchForm({ handleSearch }) {
   // выбрать короткометражки
   const onChangeFilter = () => {
     setShorts(!shorts);
-    handleSearch(inputValue, !shorts);
+    handleSearch(inputValue, !shorts, pathname);
     if (pathname === '/movies') {
       localStorage.setItem('shorts', !shorts);
     }
@@ -35,6 +35,7 @@ export default function SearchForm({ handleSearch }) {
     }
     handleSearch(inputValue, shorts, pathname);
   };
+
   useEffect(() => {
     if (pathname === '/movies') {
       const savedInputValue = localStorage.getItem('query');
@@ -48,6 +49,13 @@ export default function SearchForm({ handleSearch }) {
       if (savedInputValue || savedShorts === true) {
         handleSearch(savedInputValue, savedShorts, pathname);
       }
+    }
+    else {
+      setShorts(false);
+      setInputValue('');
+      setSavedMovies(JSON.parse(
+        localStorage.getItem("savedMovies") || "[]"
+      ));
     }
   }, [pathname]);
 

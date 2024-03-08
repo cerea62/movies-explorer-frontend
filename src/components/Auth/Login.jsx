@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Auth from './Auth'
 import Input from './Input/Input'
 import SubmitButton from '../SubmitButton/SubmitButton';
 import useFormValidation from '../../utils/useFormValidation';
 
 export default function Login({ onLogin, errorText }) {
-    
+    const navigate = useNavigate();
     const { values, errors, isValid, handleChange } = useFormValidation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,6 +25,7 @@ export default function Login({ onLogin, errorText }) {
     function handleSubmit(e) {
         e.preventDefault();
         onLogin(email, password);
+        navigate('/movies', { replace: true })
     }
 
     return (

@@ -13,22 +13,20 @@ import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Footer from '../Footer/Footer';
-import { errors } from '../../utils/errors';
+import { errorsList } from '../../utils/errors';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [statusInfo, setStatusInfo] = useState('');
   const [errorText, setErrorText] = useState('');
   const location = useLocation();
   const path = location.pathname;
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect( () => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       mainApi.checkToken(jwt).then((res) => {
         if (res) {
-
           getUserInfo();
           navigateRoute();
         }
@@ -38,7 +36,7 @@ function App() {
     }
   }, [path]);
 
-  function navigateRoute() {
+  const navigateRoute = () => {
     const isLoggedIn = localStorage.getItem("isLogin")
     if (isLoggedIn) {
       if (path === '/signup' || path === '/signin') {
@@ -47,71 +45,59 @@ function App() {
     }
   }
 
-  //Получение данных пользователя
-  function getUserInfo() {
-    mainApi.getUserInfo()
-      .then((userData) => {
-        setCurrentUser(userData);
+  const getUserInfo = async () => {
+    try {
+      const userData = await mainApi.getUserInfo();
+      if (userData) {
+        await setCurrentUser(userData);
         localStorage.setItem("isLogin", true);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+      }
+    }
+    catch (err) {
+      console.log("Ошибка получения пользователя", err);
+    }
   }
 
   //Регистрация пользователя
-  function handleRegister(name, email, password) {
-    mainApi.signup({ name, email, password })
-      .then((res) => {
+  const handleRegister = async (name, email, password) => {
+    try {
+      const res = await mainApi.signup({ name, email, password });
+      if (res) {
         handleLogin(email, password);
-        navigate("/movies")
         return true;
-      })
-      .catch(err => {
-        const error = errors(err);
-        setErrorText(error);
-        return false;
-      })
+      }
+    }
+    catch (err) {
+      const error = errorsList(err);
+      setErrorText(error);
+      return false;
+    }
   }
 
   //Авторизация пользователя
-  function handleLogin(email, password) {
-    mainApi.signin({ email, password })
-      .then((res) => {
+  const handleLogin = async (email, password) => {
+    try {
+      const res = await mainApi.signin({ email, password });
+      if (res.token) {
         localStorage.setItem("jwt", res.token);
-        getUserInfo();
-        navigate('/movies');
+        await getUserInfo();
+        navigate('/movies', { replace: true });
         return true;
-      }).catch((err) => {
-        const error = errors(err);
-        setErrorText(error);
-      });
+      }
+    }
+    catch (err) {
+      const error = errorsList(err);
+      setErrorText(error);
+    }
   }
 
   // Выход из аккаунта
-  function onSignOut() {
+  const onSignOut = () => {
     localStorage.clear();
-    navigate('/');
+    setCurrentUser({});
+    navigate('/', { replace: true });
   }
-  // Редактирование данных профиля
-  function handleUpdateUser(data) {
-    mainApi.editUserInfo(data)
-      .then((profileData) => {
-        if (profileData.name !== currentUser.name || profileData.email !== currentUser.email) {
-          setCurrentUser({
-            name: profileData.name,
-            email: profileData.email
-          })
-          setStatusInfo(true);
-          setErrorText('Данные успешно изменены!');
-        }
-      })
-      .catch((err) => {
-        const error = errors(err);
-        setErrorText(error);
-        return false;
-      });
-  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -155,10 +141,8 @@ function App() {
             element={
               <ProtectedRouteElement>
                 <Profile
-                  onUpdateUser={handleUpdateUser}
+                  setCurrentUser={setCurrentUser}
                   onSignOut={onSignOut}
-                  errorText={errorText}
-                  statusInfo={statusInfo}
                 />
               </ProtectedRouteElement>
             }

@@ -6,8 +6,10 @@ import SubmitButton from '../SubmitButton/SubmitButton'
 import useFormValidation from '../../utils/useFormValidation'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import Modal from '../Modal/Modal'
+import mainApi from '../../utils/MainApi';
+import { errorsList } from '../../utils/errors'
 
-export default function Profile({ onSignOut, onUpdateUser, errorText, statusInfo }) {
+export default function Profile({ onSignOut, setCurrentUser }) {
 
     const currentUser = useContext(CurrentUserContext);
     const [name, setName] = useState(currentUser.name);
@@ -17,13 +19,10 @@ export default function Profile({ onSignOut, onUpdateUser, errorText, statusInfo
     const [editButtonEnable, setEditButtonEnable] = useState(true);
     const [inputState, setInputState] = useState(true);
     const [openModal, setOpenModal] = useState('');
+    const [errorText, setErrorText] = useState('');
+    const [statusInfo, setStatusInfo] = useState('');
     const { errors, isValid, handleChange } = useFormValidation();
-
     const [buttonDisabled, setButtonDisabled] = useState(true);
-
-    function handlecloseModal() {
-        setOpenModal(false);
-    }
 
     useEffect(() => {
         setButtonDisabled(currentUser.name === name && currentUser.email === email);
@@ -34,18 +33,50 @@ export default function Profile({ onSignOut, onUpdateUser, errorText, statusInfo
         setEmail(currentUser.email);
     }, [currentUser.name, currentUser.email]);
 
+
+    function handlecloseModal() {
+        setOpenModal(false);
+
+    }
+
     function handleEditClick(e) {
         setEditButtonEnable(false);
         setInputState(false);
     }
 
+    // Редактирование данных профиля
+    const handleUpdateUser = async (data) => {
+        // Блокируем инпуты и кнопку сохрнаить на время запроса
+        setButtonDisabled(true);
+        setInputState(true);
+        try {
+            const profileData = await mainApi.editUserInfo(data);
+            if ((profileData) && (profileData.name !== currentUser.name || profileData.email !== currentUser.email)) {
+                await setCurrentUser({
+                    name: profileData.name,
+                    email: profileData.email
+                })
+                setEditButtonEnable(true);
+                setErrorText('Данные успешно изменены!');
+                setStatusInfo(true);
+                setOpenModal(true);
+
+                setButtonDisabled(false);
+                setInputState(false);
+                return true;
+            }
+        } catch (err) {
+            const error = errorsList(err);
+            setErrorText(error);
+            setStatusInfo(false);
+            setOpenModal(true);
+            return false;
+        }
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
-        onUpdateUser({ name, email })
-        setInputState(true);
-        setErrorNameText('');
-        setErrorEmailText('');
-        setOpenModal(true);
+        handleUpdateUser({ name, email });
     }
 
     function handleEmailChange(e) {
@@ -73,7 +104,7 @@ export default function Profile({ onSignOut, onUpdateUser, errorText, statusInfo
             setErrorNameText('');
         }
     }
-    
+
     return (
         <>
             <section className='profile'>
@@ -126,7 +157,7 @@ export default function Profile({ onSignOut, onUpdateUser, errorText, statusInfo
                     {editButtonEnable ? (
                         <div className='profile__submit'>
                             <button className='profile__submit-button button' onClick={handleEditClick}>Редактировать</button>
-                            <Link className='profile__signout link' to={'/signin'} onClick={onSignOut}>Выйти из аккаунта</Link>
+                            <Link className='profile__signout link' to={'/'} onClick={onSignOut}>Выйти из аккаунта</Link>
                         </div>
                     ) :
                         (

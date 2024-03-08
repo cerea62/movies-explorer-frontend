@@ -4,7 +4,11 @@
     padding: 0;
     text-align: center;
 }
-
+.submit__fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
 .submit__button {
     width: 396px;
     height: 45px;
