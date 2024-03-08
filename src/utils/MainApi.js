@@ -1,8 +1,8 @@
-// const baseUrl = 'https://api.cerea62.nomoredomainswork.ru'
+import { SAVED_MOVIES_API_ADDRESS } from "./constants";
 
 
 const config = {
-  baseUrl: 'http://localhost:3001',
+  baseUrl: SAVED_MOVIES_API_ADDRESS,
   headers: {
     'Content-Type': 'application/json'
   }

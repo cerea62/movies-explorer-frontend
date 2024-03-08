@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './MovieCard.css';
-import { MOVIES_API_ADDRESS } from '../../utils/constants';
+import { MOVIES_URL_ADDRESS } from '../../utils/constants';
 
 export default function MovieCard({ movie, handleLikeMovie }) {
 
@@ -54,7 +54,7 @@ export default function MovieCard({ movie, handleLikeMovie }) {
 
                 </div>
                 <a className='movie__trailer' href={movieTrailer} target="_blank" rel="noopener noreferrer">
-                    <img className="movie__image" src={(`${MOVIES_API_ADDRESS}${imageUrl}`)}
+                    <img className="movie__image" src={(`${MOVIES_URL_ADDRESS}${imageUrl}`)}
                         alt={movie.nameRu} />
                 </a>
             </div>

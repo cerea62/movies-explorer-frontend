@@ -1,4 +1,5 @@
-const movieUrl = 'https://api.nomoreparties.co/beatfilm-movies'
+import { MOVIES_API_ADDRESS } from "./constants";
+
 class Api {
   #handleResponse = res => {
     if (res.ok) {
@@ -7,8 +8,8 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  constructor(baseUrl) {
-    this._movieUrl = movieUrl;
+  constructor() {
+    this._movieUrl = MOVIES_API_ADDRESS;
   }
   getMovies() {
     return fetch(`${this._movieUrl}`, {
@@ -19,6 +20,6 @@ class Api {
       .then(this.#handleResponse);
   }
 }
-const moviesApi = new Api(movieUrl);
+const moviesApi = new Api();
 
 export default moviesApi;

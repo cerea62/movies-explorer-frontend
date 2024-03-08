@@ -1,4 +1,5 @@
-export const MOVIES_API_ADDRESS = 'https://api.nomoreparties.co';
+export const MOVIES_API_ADDRESS = 'https://api.nomoreparties.co/beatfilm-movies';
+export const MOVIES_URL_ADDRESS = 'https://api.nomoreparties.co';
 export const SAVED_MOVIES_API_ADDRESS = 'http://localhost:3001';
 
 export const NOT_FOUND_CODE = 404;
