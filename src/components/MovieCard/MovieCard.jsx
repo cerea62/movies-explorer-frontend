@@ -4,6 +4,7 @@ import './MovieCard.css';
 import { MOVIES_API_ADDRESS } from '../../utils/constants';
 
 export default function MovieCard({ movie, handleLikeMovie }) {
+
     const imageUrl = movie.image.url;
     const hours = Math.floor(movie.duration / 60);
     const minutes = movie.duration % 60;
@@ -12,8 +13,6 @@ export default function MovieCard({ movie, handleLikeMovie }) {
     const path = location.pathname;
     const movieLikeButtonClassName = (
         `button movie__button movie__like ${movie.isLiked ? 'movie__like_active' : ''}`);
-
-console.log(movie);
 
     function handleLikeClick(e) {
         const button = e.target;
@@ -26,7 +25,7 @@ console.log(movie);
     }
     function likeMovie(e) {
 
-        handleLikeMovie(movie);
+        handleLikeMovie(movie, path);
         handleLikeClick(e);
     }
 
@@ -56,10 +55,7 @@ console.log(movie);
                 </div>
                 <a className='movie__trailer' href={movieTrailer} target="_blank" rel="noopener noreferrer">
                     <img className="movie__image" src={(`${MOVIES_API_ADDRESS}${imageUrl}`)}
-                    // {path === '/movies' ?
-                    //     (`${MOVIES_API_ADDRESS}${imageUrl}`) : (movie.image)
-                    // } 
-                    alt={movie.nameRu} />
+                        alt={movie.nameRu} />
                 </a>
             </div>
         </>

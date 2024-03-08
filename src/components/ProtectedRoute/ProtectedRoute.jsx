@@ -1,8 +1,9 @@
 import React from 'react';
-import { Navigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-function ProtectedRouteElement({  isLogin, children  }) {
-  return <>{{isLogin} ? children : <Navigate to='/' />}</>;
+function ProtectedRouteElement({ children }) {
+  const isLoggedIn = localStorage.getItem("isLogin")
+  return <>  {isLoggedIn ? children : <Navigate to="/" replace />}</>;
 }
 
 export default ProtectedRouteElement;

@@ -5,9 +5,9 @@ import './SearchForm.css';
 import searchIcon from '../../image/search-icon.svg';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
 
-export default function SearchForm({handleSearch}) {
-    const [shorts, setShorts] = useState(false); // состояние чекбокса для выбора короткометражек
-//   const [placeholderContent, setPlaceholderContent] = useState('Название'); // текст плейсхолдера после запроса нужно менять
+export default function SearchForm({ handleSearch }) {
+  const [shorts, setShorts] = useState(false);
+  const [placeholderContent, setPlaceholderContent] = useState('Фильм');
   const [inputValue, setInputValue] = useState('');
   const { pathname } = useLocation();
 
@@ -27,8 +27,7 @@ export default function SearchForm({handleSearch}) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (!inputValue) {
-    //   setError(true);
-      evt.target.elements['search-query'].focus();
+      setPlaceholderContent('Нужно ввести ключевое слово');
       return;
     }
     if (pathname === '/movies') {
@@ -47,33 +46,32 @@ export default function SearchForm({handleSearch}) {
         setShorts(savedShorts);
       }
       if (savedInputValue || savedShorts === true) {
-        handleSearch(savedInputValue, savedShorts);
+        handleSearch(savedInputValue, savedShorts, pathname);
       }
     }
   }, [pathname]);
 
-    return (
-        <>
-            <section className='search'>
-                <div className='search-container'>
-                    <form className='search__form' onSubmit={handleSubmit}>
-                        <img className='search__form-icon' src={searchIcon} alt="Иконка лупа" />
-                        <input
-                            className='search__field'
-                            name="movie"
-                            type='text'
-                            placeholder='Фильм'
-                            value={inputValue}
-                            onChange={handleChange}
-                            required
-                        />
-                        <button className='search__submit'></button>
-                    </form>
-                    <FilterCheckbox
-                        onChangeFilter={onChangeFilter}
-                        shorts={shorts} />
-                </div>
-            </section>
-        </>
-    )
+  return (
+    <>
+      <section className='search'>
+        <div className='search-container'>
+          <form className='search__form' onSubmit={handleSubmit}>
+            <img className='search__form-icon' src={searchIcon} alt="Иконка лупа" />
+            <input
+              className='search__field'
+              name="movie"
+              type='text'
+              placeholder={placeholderContent}
+              value={inputValue}
+              onChange={handleChange}
+            />
+            <button className='search__submit'></button>
+          </form>
+          <FilterCheckbox
+            onChangeFilter={onChangeFilter}
+            shorts={shorts} />
+        </div>
+      </section>
+    </>
+  )
 }

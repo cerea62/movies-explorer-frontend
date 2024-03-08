@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 import SubmitButton from '../SubmitButton/SubmitButton'
 import useFormValidation from '../../utils/useFormValidation'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import Modal from '../Modal/Modal'
 
-export default function Profile({ onSignOut, onUpdateUser}) {
+export default function Profile({ onSignOut, onUpdateUser, errorText, statusInfo }) {
 
     const currentUser = useContext(CurrentUserContext);
     const [name, setName] = useState(currentUser.name);
@@ -15,20 +16,15 @@ export default function Profile({ onSignOut, onUpdateUser}) {
     const [errorEmailText, setErrorEmailText] = useState('');
     const [editButtonEnable, setEditButtonEnable] = useState(true);
     const [inputState, setInputState] = useState(true);
-    const { values, errors, isValid, handleChange } = useFormValidation();
+    const [openModal, setOpenModal] = useState('');
+    const { errors, isValid, handleChange } = useFormValidation();
 
     const [buttonDisabled, setButtonDisabled] = useState(true);
 
-    // function setUserData() {
-    //     setName(currentUser.name);
-    //     setEmail(currentUser.email);
-    // }
-    // useEffect(() => {
-    //     setUserData();
-    //     // setName(currentUser.name);
-    //     // setEmail(currentUser.email);
-    // }, [currentUser]);
-    /**После загрузки текущего пользователя из API его данные будут использованы в управляемых компонентах.*/
+    function handlecloseModal() {
+        setOpenModal(false);
+    }
+
     useEffect(() => {
         setButtonDisabled(currentUser.name === name && currentUser.email === email);
     }, [name, email, currentUser.name, currentUser.email]);
@@ -43,24 +39,13 @@ export default function Profile({ onSignOut, onUpdateUser}) {
         setInputState(false);
     }
 
-    // function handleUpdateUser(data) {
-    //     mainApi.editUserInfo(data)
-    //         .then((profileData) => {
-    //             setName(profileData.name);
-    //             setEmail(profileData.email);
-
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
-
     function handleSubmit(e) {
         e.preventDefault();
         onUpdateUser({ name, email })
         setInputState(true);
         setErrorNameText('');
         setErrorEmailText('');
+        setOpenModal(true);
     }
 
     function handleEmailChange(e) {
@@ -69,11 +54,11 @@ export default function Profile({ onSignOut, onUpdateUser}) {
         if (e.target.value === currentUser.email) {
             setErrorEmailText('E-mail совпадает с текущим');
             setButtonDisabled(false);
-         }
-         else {
+        }
+        else {
             setButtonDisabled(true);
             setErrorEmailText('');
-         }
+        }
     }
 
     function handleNameChange(e) {
@@ -82,12 +67,13 @@ export default function Profile({ onSignOut, onUpdateUser}) {
         if (e.target.value === currentUser.name) {
             setErrorNameText('Имя пользователя не отличается от текущего');
             setButtonDisabled(false);
-         }
-         else {
+        }
+        else {
             setButtonDisabled(true);
             setErrorNameText('');
-         }
+        }
     }
+    
     return (
         <>
             <section className='profile'>
@@ -107,7 +93,7 @@ export default function Profile({ onSignOut, onUpdateUser}) {
                                     maxLength='30'
                                     required
                                     title='Разрешено использовать латиницу, кириллицу, пробел или дефис'
-                                    pattern='^[A-Za-zА-Яа-яЁё\s-]+$'
+                                    pattern='^[A-Za-zА-Яа-яЁё\s]+$'
                                     onChange={handleNameChange}
                                     disabled={inputState}
                                 />
@@ -151,12 +137,14 @@ export default function Profile({ onSignOut, onUpdateUser}) {
                                 authClassName={'profile'}
                                 authLink={'/signin'}
                                 isDisabled={buttonDisabled}
-                                // errorText={errorText}
                             />
-
                         )}
-
                 </form>
+                <Modal
+                    isOpen={openModal}
+                    onClose={handlecloseModal}
+                    statusInfo={statusInfo}
+                    title={errorText} />
             </section >
         </>
     )

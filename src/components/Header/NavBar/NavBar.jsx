@@ -3,13 +3,11 @@ import './NavBar.css'
 import { Link, useLocation } from 'react-router-dom';
 import mainIcon from '../../../image/main-icon.svg'
 
-export default function NavBar({isLogin}) {
+export default function NavBar() {
     const menuRef = useRef();
     const location = useLocation();
     const path = location.pathname;
-    // const [state] = useStore();
-    // const { isLogin } = state;
-
+    
     const handleOpenMenu = () => {
         const menu = menuRef.current;
         menu.style.display = "flex";
@@ -19,10 +17,11 @@ export default function NavBar({isLogin}) {
         const menu = menuRef.current;
         menu.style.display = "";
     };
+    const isLoggedIn = localStorage.getItem("isLogin")
   
     return (
         <>
-            {isLogin ? (
+            {isLoggedIn ? (
                 <nav className="navbar navbar_navigate-movies">
                     <div className="navbar__movies" ref={menuRef}>
                         <button

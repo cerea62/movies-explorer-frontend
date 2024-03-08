@@ -58,7 +58,7 @@ export default function Register({ onRegister, errorText }) {
                         inputPlaceholder={'E-mail'}
                         inputValue={values.email || ''}
                         onChange={onEmailChange}
-                        error={errors.email}
+                        error={errors.email || ''}
                         errorMesage={'Некорректный e-mail'}
                         isValid={isValid}
 

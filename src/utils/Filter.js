@@ -1,4 +1,4 @@
-const MAX_SHORTS_DURATION = 40;
+import { MAX_SHORTS_DURATION } from "./constants";
 export default function searchFilter(array, query, short) {
   if (!array) {
     return [];

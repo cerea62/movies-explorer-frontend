@@ -42,7 +42,7 @@ export default function Login({ onLogin, errorText }) {
                         inputValue={values.email || ''}
                         onChange={onEmailChange}
                         error={errors.email}
-                        errorMesage={'Некорректный e-mail'}
+                        errorMesage={errors.email || ''}
                         isValid={isValid}
 
                     />

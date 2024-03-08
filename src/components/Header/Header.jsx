@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
 import Logo from '../Logo/Logo'
 
-export default function Header({isLogin}) {
+export default function Header() {
     const location = useLocation();
     const path = location.pathname;
     return (
@@ -12,8 +12,7 @@ export default function Header({isLogin}) {
             <header className={`header ${path !== '/' ? '' : 'header_theme_color'}`}>
                 <div className='header__container'>
                     <Logo />
-                    <NavBar
-                    isLogin={isLogin} />
+                    <NavBar />
                 </div>
             </header>
         </>

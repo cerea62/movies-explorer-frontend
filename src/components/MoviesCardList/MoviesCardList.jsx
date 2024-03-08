@@ -12,7 +12,7 @@ export default function MoviesCardList({ handleLikeMovie, movies, savedMoviesLis
     const [countMovies, setCountMovies] = useState(0);
     function shownCount() {
         const display = window.innerWidth
-        if (display > 1180) {//(display > 1180)
+        if (display > 1180) {
             setCountMovies(12) // 12 карточек на разрешении 1280px
         } else if (display > 767) {
             setCountMovies(8) // 8 карточек на разрешении 768px
@@ -31,10 +31,9 @@ export default function MoviesCardList({ handleLikeMovie, movies, savedMoviesLis
         }, 500)
     })
 
-    // Увеличивает количество отображаемых карточек при нажатии на кнопку "Ещё"
     function showMore() {
         const display = window.innerWidth
-        if (display > 1180) {//(display > 1180)
+        if (display > 1180) {
             setCountMovies(countMovies + 3)
         } else if (display > 767) {
             setCountMovies(countMovies + 2)
@@ -49,7 +48,7 @@ export default function MoviesCardList({ handleLikeMovie, movies, savedMoviesLis
                 {pathname === '/saved-movies' ? (
                     <ul className="movies-container__items">
                         {savedMoviesList.map(movie => (
-                            <li key={movie.movieId} className="movie">
+                            <li key={movie.id} className="movie">
                                 <MovieCard
                                     movie={movie}
                                     handleLikeMovie={handleLikeMovie}

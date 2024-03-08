@@ -57,6 +57,10 @@ export default function Movies() {
           setOpenModal(false);
           setInfoTitle(MOVVIES_MESSAGE);
         });
+    } else {
+      setSavedMovies(JSON.parse(
+        localStorage.getItem("savedMovies") || "[]"
+      ));
     }
   }
 
@@ -85,7 +89,7 @@ export default function Movies() {
     setIsLoading(false);
   };
 
-  const handleLikeMovie = (movie) => {
+  const handleLikeMovie = (movie, path) => {
     const prepareMovie = {
       country: movie.country,
       director: movie.director,
@@ -100,12 +104,11 @@ export default function Movies() {
       nameEN: movie.nameEN,
     };
 
-    if (movie.isLiked || !(movie._id === undefined)) {
+    if (movie.isLiked || path === '/saved-movies') {
       mainApi
         .deleteMovie(movie._id)
         .then(() => {
-          // localStorage.removeItem('savedMovies');
-          // getSavedMovies();
+          changeLocalStorageData(movie, undefined);
         })
         .catch(() => {
           console.log("Error delete liked move", movie);
@@ -113,11 +116,16 @@ export default function Movies() {
     } else {
       mainApi
         .saveMovie(prepareMovie)
-        .then((movieResp) => { })
+        .then((movieResp) => {
+          changeLocalStorageData(movie, movieResp._id)
+        })
         .catch(() => {
           console.log("Error save liked move", movie);
         });
     }
+  }
+
+  function changeLocalStorageData(movie, createdId) {
 
     const filtredMovies = movies.map((filtredMovie) => {
       if (filtredMovie.id === movie.id) {
@@ -130,6 +138,9 @@ export default function Movies() {
     const localMovies = allMovies.map((localMovie) => {
       if (localMovie.id === movie.id) {
         localMovie.isLiked = !localMovie.isLiked;
+        if (createdId) {
+          localMovie._id = createdId;
+        }
       }
       return localMovie;
     });
@@ -146,7 +157,6 @@ export default function Movies() {
     setSavedMovies(localMovies.filter((movieitem) => movieitem.isLiked));
 
   }
-
 
   // обработчик кнопки Найти фильм
   const handleSearch = (query, shorts, path) => {
@@ -166,7 +176,6 @@ export default function Movies() {
           <MoviesCardList
             movies={movies}
             savedMoviesList={savedMovies}
-            // savedMoviesList={JSON.parse(localStorage.getItem("savedMovies"))}
             handleLikeMovie={handleLikeMovie} />
         }
         <Modal

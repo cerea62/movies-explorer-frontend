@@ -2,7 +2,6 @@ import './App.css';
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import mainApi from '../../utils/MainApi';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute';
@@ -14,71 +13,49 @@ import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Footer from '../Footer/Footer';
-
 import { errors } from '../../utils/errors';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [movies, setMovies] = useState([]);
-  const [isLogin, setIsLogin] = useState(false);
+  const [statusInfo, setStatusInfo] = useState('');
   const [errorText, setErrorText] = useState('');
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
   const location = useLocation();
   const path = location.pathname;
   const navigate = useNavigate();
-  // const history = useHistory();
-
-
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       mainApi.checkToken(jwt).then((res) => {
         if (res) {
-          setIsLogin(true);
+
           getUserInfo();
+          navigateRoute();
         }
-
-        if (isLogin) {
-          if (path === '/signup' || path === '/signin') {
-            navigate('/movies')
-          } else navigate(path)
-        }
-        else
-          if (path === '/movies' || path === '/saved-movies') {
-            navigate('/signin')
-          }
-          else navigate(path)
-
       }).catch((err) => {
         console.error(err);
       });
     }
-  }, [isLogin,path, navigate]);
+  }, [path]);
 
-    // //защитим пути проверкой isLogin
-    // useEffect(() => {
-    //   if (isLogin) {
-    //     if (path === '/signup' || path === '/signin') {
-    //       navigate('/')
-    //     }
-    //   }
-    //   else
-    //     if (path === '/movies' || path === '/saved-movies') {
-    //       navigate('/signin')
-    //     }
-    //     else navigate(path)
-    // }, [isLogin,path, navigate]);
+  function navigateRoute() {
+    const isLoggedIn = localStorage.getItem("isLogin")
+    if (isLoggedIn) {
+      if (path === '/signup' || path === '/signin') {
+        navigate('/movies')
+      }
+    }
+  }
 
   //Получение данных пользователя
   function getUserInfo() {
     mainApi.getUserInfo()
       .then((userData) => {
         setCurrentUser(userData);
+        localStorage.setItem("isLogin", true);
       })
       .catch((err) => {
-         console.log(err);
+        console.log(err);
       })
   }
 
@@ -87,7 +64,6 @@ function App() {
     mainApi.signup({ name, email, password })
       .then((res) => {
         handleLogin(email, password);
-        // console.log(res);
         navigate("/movies")
         return true;
       })
@@ -103,7 +79,6 @@ function App() {
     mainApi.signin({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setIsLogin(true);
         getUserInfo();
         navigate('/movies');
         return true;
@@ -116,7 +91,6 @@ function App() {
   // Выход из аккаунта
   function onSignOut() {
     localStorage.clear();
-    setIsLogin(false);
     navigate('/');
   }
   // Редактирование данных профиля
@@ -128,8 +102,8 @@ function App() {
             name: profileData.name,
             email: profileData.email
           })
-        } else {
-          setErrorText('Имя пользователя или e-mail совпадают')
+          setStatusInfo(true);
+          setErrorText('Данные успешно изменены!');
         }
       })
       .catch((err) => {
@@ -141,11 +115,8 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-
         {path === '/' || path === '/movies' || path === '/saved-movies' || path === '/profile' ?
-          <Header
-            isLogin={isLogin} /> : ''
-        }
+          <Header /> : ''}
         <Routes>
 
           <Route path='/signin'
@@ -166,39 +137,32 @@ function App() {
 
           <Route exact path="/movies"
             element={
-              <ProtectedRouteElement
-                isLogin={isLogin}>
-                <Movies
-                  isLogin={isLogin}
-                  movies={movies}
-                />
+              <ProtectedRouteElement>
+                <Movies />
               </ProtectedRouteElement>
             }
           />
 
           <Route exact path="/saved-movies"
             element={
-              <ProtectedRouteElement
-                isLogin={isLogin}>
-                <Movies
-                  isLogin={isLogin}
-                  movies={movies} />
+              <ProtectedRouteElement>
+                <Movies />
               </ProtectedRouteElement>
             }
           />
 
           <Route exact path="/profile"
             element={
-              <ProtectedRouteElement
-                isLogin={isLogin}>
+              <ProtectedRouteElement>
                 <Profile
                   onUpdateUser={handleUpdateUser}
                   onSignOut={onSignOut}
-                  errorText={errorText} />
+                  errorText={errorText}
+                  statusInfo={statusInfo}
+                />
               </ProtectedRouteElement>
             }
           />
-
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         {path === '/' || path === '/movies' || path === '/saved-movies' ?
