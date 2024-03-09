@@ -39,7 +39,9 @@
     margin: 0;
     background-position-y: 10px;
 }
-
+.search__field:focus {
+    outline: none;
+}
 .search__submit {
     width: 36px;
     height: 36px;

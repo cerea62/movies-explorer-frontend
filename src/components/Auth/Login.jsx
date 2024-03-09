@@ -1,24 +1,39 @@
 import React from 'react'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Auth from './Auth'
 import Input from './Input/Input'
 import SubmitButton from '../SubmitButton/SubmitButton';
 import useFormValidation from '../../utils/useFormValidation';
 
-export default function Login() {
+export default function Login({ onLogin, errorText }) {
+    const navigate = useNavigate();
     const { values, errors, isValid, handleChange } = useFormValidation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    function onChange(e) {
+    function onEmailChange(e) {
         handleChange(e);
+        setEmail(e.target.value)
+    }
+
+    function onPasswordChange(e) {
+        handleChange(e);
+        setPassword(e.target.value)
     }
 
     function handleSubmit(e) {
         e.preventDefault();
+        onLogin(email, password);
+        navigate('/movies', { replace: true })
     }
+
     return (
         <>
             <Auth
                 title={'Рады видеть!'}
                 onSubmit={handleSubmit}
+                errorText={errorText}
             >
                 <div className='input-container'>
                     <Input
@@ -27,9 +42,9 @@ export default function Login() {
                         inputLabel={'E-mail'}
                         inputPlaceholder={'E-mail'}
                         inputValue={values.email || ''}
-                        onChange={onChange}
+                        onChange={onEmailChange}
                         error={errors.email}
-                        errorMesage = {'Некорректный e-mail'}
+                        errorMesage={errors.email || ''}
                         isValid={isValid}
 
                     />
@@ -40,9 +55,9 @@ export default function Login() {
                         inputPlaceholder={'Пароль'}
                         minLength={6}
                         inputValue={values.password || ''}
-                        onChange={onChange}
+                        onChange={onPasswordChange}
                         error={errors.password}
-                        errorMesage = {'Некорректный пароль'}
+                        errorMesage={'Некорректный пароль'}
                         isValid={isValid}
                     />
                 </div>
@@ -53,6 +68,7 @@ export default function Login() {
                     authClassName={'login'}
                     authLink={'/signup'}
                     isDisabled={!isValid}
+                    errorText={errorText}
                 />
             </Auth>
         </>

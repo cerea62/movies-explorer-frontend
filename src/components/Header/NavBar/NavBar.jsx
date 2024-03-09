@@ -7,10 +7,7 @@ export default function NavBar() {
     const menuRef = useRef();
     const location = useLocation();
     const path = location.pathname;
-    // const [state] = useStore();
-    // const { loggedIn } = state;
-    const IsLogged = true; //временная заглушка для тестирования верстки
-
+    
     const handleOpenMenu = () => {
         const menu = menuRef.current;
         menu.style.display = "flex";
@@ -20,10 +17,11 @@ export default function NavBar() {
         const menu = menuRef.current;
         menu.style.display = "";
     };
+    const isLoggedIn = localStorage.getItem("isLogin")
   
     return (
         <>
-            {IsLogged ? (
+            {isLoggedIn ? (
                 <nav className="navbar navbar_navigate-movies">
                     <div className="navbar__movies" ref={menuRef}>
                         <button

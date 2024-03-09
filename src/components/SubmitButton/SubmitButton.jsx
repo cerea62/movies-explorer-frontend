@@ -2,18 +2,25 @@ import React from "react";
 import './SubmitButton';
 import { Link } from "react-router-dom";
 
-export default function SubmitButton({authClassName, buttonText, loginStatus, authLink, linkText, isDisabled}) {
-    const submitClassName = "button submit__button submit__button_type_" + authClassName;
+export default function SubmitButton({ authClassName, buttonText, loginStatus, authLink, linkText, isDisabled, errorText }) {
+    const submitClassName = "submit submit_type_" + authClassName;
     return (
         <>
-            <div className='submit'>
-                <span className='submit__error text submit__error_visible'>Здесь будет сообщение об ошибке</span>
-               
-                <button type="submit" className={submitClassName} disabled={isDisabled}>{buttonText}</button>
+        <div className={submitClassName}>
+            <fieldset className='submit__fieldset'>
+                {errorText ? (
+                    <p className='submit__error'>{errorText}</p>
+                ) : null
+                }
+                <button type="submit" className="button submit__button" disabled={isDisabled}>{buttonText}</button>
+            </fieldset>
+            <div className='submit__redirect'>
                 <p className='submit__text'>{loginStatus}{' '}
                     <Link className='link submit__link' to={authLink}>{linkText}</Link>
                 </p>
             </div>
+            </div>
+
         </>
     )
 }

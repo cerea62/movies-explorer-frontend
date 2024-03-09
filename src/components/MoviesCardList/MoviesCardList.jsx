@@ -5,17 +5,14 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import './MoviesCardList.css'
 import MovieCard from '../MovieCard/MovieCard'
-import { movies } from '../../utils/constants'
 
+export default function MoviesCardList({ handleLikeMovie, movies, savedMoviesList }) {
 
-
-export default function MoviesCardList({ onLikeClick }) {
-    const { path } = useLocation();
+    const {pathname} = useLocation();
     const [countMovies, setCountMovies] = useState(0);
-
     function shownCount() {
         const display = window.innerWidth
-        if (display > 1180) {//(display > 1180)
+        if (display > 1180) {
             setCountMovies(12) // 12 карточек на разрешении 1280px
         } else if (display > 767) {
             setCountMovies(8) // 8 карточек на разрешении 768px
@@ -28,16 +25,23 @@ export default function MoviesCardList({ onLikeClick }) {
         shownCount()
     }, [])
 
-    useEffect(() => {
+    const resizeAction = () => {
         setTimeout(() => {
-            window.addEventListener("resize", shownCount)
-        }, 500)
-    })
+            shownCount();
+          }, 500);
+    }
 
-    // Увеличивает количество отображаемых карточек при нажатии на кнопку "Ещё"
+    useEffect(() => {
+        shownCount();
+        window.addEventListener('resize', resizeAction)
+    return () => {
+        document.removeEventListener("resize", resizeAction);
+      };  
+}, []);
+
     function showMore() {
         const display = window.innerWidth
-        if (display > 1180) {//(display > 1180)
+        if (display > 1180) {
             setCountMovies(countMovies + 3)
         } else if (display > 767) {
             setCountMovies(countMovies + 2)
@@ -48,33 +52,28 @@ export default function MoviesCardList({ onLikeClick }) {
 
     return (
         <>
-            <section className='movies-container'>
-                {path === '/saved-movies' ? (
-                        <ul className="movies-container__items">
-                            {movies.map(movie => (
-                                <li key={movie._id} className="movie">
-                                    <MovieCard
-                                        movies={movie}
-                                        title={movie.title}
-                                        link={movie.link}
-                                        duration={movie.duration}
-                                        onLikeClick={onLikeClick}
-                                    />
-                                </li>
-                            ))}
-                        </ul>
+            <section className='movies-container' >
+                {pathname === '/saved-movies' ? (
+                    <ul className="movies-container__items">
+                        {savedMoviesList.map(movie => (
+                            <li key={movie.id} className="movie">
+                                <MovieCard
+                                    movie={movie}
+                                    handleLikeMovie={handleLikeMovie}
+                                />
+                            </li>
+                        ), 12)}
+                    </ul>
                 )
                     : (
                         <div>
                             <ul className="movies-container__items">
                                 {movies.slice(0, countMovies).map(movie => (
-                                    <li key={movie._id} className="movie">
+
+                                    <li key={movie.id} className="movie">
                                         <MovieCard
-                                            movies={movie}
-                                            title={movie.title}
-                                            link={movie.link}
-                                            duration={movie.duration}
-                                            onLikeClick={onLikeClick}
+                                            movie={movie}
+                                            handleLikeMovie={handleLikeMovie}
                                         />
                                     </li>
                                 ))}

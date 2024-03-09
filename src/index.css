@@ -22,5 +22,6 @@
 @import url(../src/components/Main/Techs/Techs.css);
 @import url(../src/components/Main/AboutMe/AboutMe.css);
 @import url(../src/components/Main/Portfolio/Portfolio.css);
-
+@import url(../src/components/Preloader/Preloader.css);
 @import url(../src/components/SubmitButton/SubmitButton.css);
+@import url(../src/components/Modal/Modal.css);
